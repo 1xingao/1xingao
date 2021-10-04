@@ -37,4 +37,4 @@ for i in range(len(tage_list)):
     sheet.write(7,i,data_list_7[i])
 for i in range(len(tage_list)):
     sheet.write(8,i,data_list_8[i])
-book.save("computer_list.xls")
+book.save("assist/computer_list.xls")
