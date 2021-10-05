@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 
 #numpy的练习程序
-im = Image.open("assist/keli.jpg")
+im = Image.open("1xingao/assist/keli.jpg")
 
 mp = np.array(im)
 mp_0 = np.array([1, 2, 4])
