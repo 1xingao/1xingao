@@ -19,7 +19,7 @@ print("mp_1",mp_1)
 mp_3 = np.eye(2, 2)
 # np.eye(n, m)定义一个二维单位矩阵。i=j（行索引和列索引相等）的元素为 1，其余为 0
 print("mp_3:",mp_3) 
-#numpy所创建的数组默认类型为float
+#numpy所创建的数组默认类型为double
 
 mp_4 = np.diag([1, 2, 4])
 #numpy.diag可以定义一个具有沿对角线给定值的方形二维数组

@@ -86,7 +86,7 @@ def _main(args):
     prev_layer = input_layer
     all_layers = []
 
-    weight_decay = float(cfg_parser['net_0']['decay']
+    weight_decay = double(cfg_parser['net_0']['decay']
                          ) if 'net_0' in cfg_parser.sections() else 5e-4
     count = 0
     out_index = []
@@ -116,14 +116,14 @@ def _main(args):
 
             conv_bias = np.ndarray(
                 shape=(filters, ),
-                dtype='float32',
+                dtype='double32',
                 buffer=weights_file.read(filters * 4))
             count += filters
 
             if batch_normalize:
                 bn_weights = np.ndarray(
                     shape=(3, filters),
-                    dtype='float32',
+                    dtype='double32',
                     buffer=weights_file.read(filters * 12))
                 count += 3 * filters
 
@@ -136,7 +136,7 @@ def _main(args):
 
             conv_weights = np.ndarray(
                 shape=darknet_w_shape,
-                dtype='float32',
+                dtype='double32',
                 buffer=weights_file.read(weights_size * 4))
             count += weights_size
 

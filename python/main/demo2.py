@@ -190,7 +190,7 @@ def main(yolo):
             for j in range(1, len(pts[track.track_id])):
                if pts[track.track_id][j - 1] is None or pts[track.track_id][j] is None:
                     continue
-               thickness = int(np.sqrt(64 / float(j + 1)) * 2)
+               thickness = int(np.sqrt(64 / double(j + 1)) * 2)
                cv2.line(frame,(pts[track.track_id][j-1]), (pts[track.track_id][j]),(color),thickness)
                #cv2.putText(frame, str(class_names[j]),(int(bbox[0]), int(bbox[1] -20)),0, 5e-3 * 150, (255,255,255),2)
 
