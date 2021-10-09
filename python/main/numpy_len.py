@@ -14,8 +14,8 @@ mp_1 = np.arange(0, 10, 2, dtype=np.int8)
 
 #arange函数可指定起始，结束，步长，类型
 
-#同类型的还有linspace函数它将步长参数换位所指定的数组元素个数1121
-print("mp_1",mp_1)
+#同类型的还有linspace函数它将步长参数换位所指定的数组元素个数
+print("mp_1",mp_1) 
 
 mp_3 = np.eye(2, 2)
 # np.eye(n, m)定义一个二维单位矩阵。i=j（行索引和列索引相等）的元素为 1，其余为 0
