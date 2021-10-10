@@ -19,7 +19,7 @@ def ba_fangping(x):
     temp = 0
     for i in x:
         temp += i*i
-    return temp / 5.0 
+    return temp / 5.0
 #计算乘积的平均值
 def cac(x,y):
     temp = 0
