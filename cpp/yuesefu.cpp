@@ -11,10 +11,10 @@ void delet(struct node* head,int count)
         if (count = 0){
             struct node* temp = p;
             p = p->next;
-            free(p->data);
             free(temp);
             continue;
         }
+        count--;
         p = p->next;
         left = left ->next;
     }
