@@ -2,7 +2,7 @@
 struct node{
     int data;
     struct node* next;
-}
+};
 void delet(struct node* head,int count)
 {
     struct node* p = head->next;
