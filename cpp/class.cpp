@@ -13,7 +13,7 @@ class Complex{
         c2 = y;
     }
     int clac();
-    void setc1(int data){this ->c1 = data;}
+    void setc1(int data){this->c1 = data;}
     int getc1(){return c1;}
     int getc2(){return c2;}
 
