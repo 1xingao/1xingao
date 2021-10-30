@@ -106,9 +106,7 @@ int main()
     ifstream srcfile("in.txt",ios::in);
     ofstream dirfile("out.txt",ios::out);
     int x;
-    while (srcfile >> x){
-        v.push_back(x);
-    }
+    while (srcfile >> x){v.push_back(x);}
     //vector <int> cpt;
     //cpt.push_back(1);
     //cpt.push_back(2);
