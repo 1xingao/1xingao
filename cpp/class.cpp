@@ -1,57 +1,74 @@
-#include<stdio.h>
-#include<iostream>
+#include <stdio.h>
+#include <iostream>
+#include<fstream>
+#include<vector>
+#include<algorithm>//包含sort函数
 using namespace std;
 
-class Complex{
-    private:
-    int c1,c2;
+class Base
+{
     public:
-    Complex(int x,int y):c1(x),c2(y){}//构造函数名字与类名相同
+    virtual void funA() = 0;
+    virtual ~Base(){cout << "基类析构"<< endl;}
+};
+class Test:public Base
+{
+    private:
+    int t1,t2;
+    void funA(){cout << "派生类输出" << endl;} //多态
+    ~Test(){cout << "派生类析构" <<endl;}//派生类使用基类的虚函数的时候不需要再次声明
+};
+class Complex
+{
+private:
+    int c1, c2;
+
+public:
+    Complex(int x, int y) : c1(x), c2(y) {} //构造函数名字与类名相同
     Complex(int y)
     {
         c1 = 0;
         c2 = y;
     }
     int clac();
-    void setc1(int data){c1 = data;}//提供对象外访问对象私有变量的接口
-    int getc1(){return c1;}
-    Complex operator+(const Complex &b)//运算符重载再对象里面时候少一个参数
+    void setc1(int data) { c1 = data; } //提供对象外访问对象私有变量的接口
+    int getc1() { return c1; }
+    Complex operator+(const Complex &b) //运算符重载再对象里面时候少一个参数
     {
-       return Complex( c1+b.c1,c2+b.c2);
+        return Complex(c1 + b.c1, c2 + b.c2);
     }
-    int getc2(){return c2;}
+    int getc2() { return c2; }
     void returncha();
-    //friend class letter;
-    friend Complex operator-(const Complex &a,const Complex &b);//友元函数，可以直接访问私有变量
-
+    // friend class letter;
+    friend Complex operator-(const Complex &a, const Complex &b); //友元函数，可以直接访问私有变量
 };
-Complex operator-(const Complex &a,const Complex &b)
+Complex operator-(const Complex &a, const Complex &b)
 {
-    return Complex(a.c1+b.c1,a.c2+b.c2);//返回一个临时对象
+    return Complex(a.c1 - b.c1, a.c2 - b.c2); //返回一个临时对象
 }
 void Complex::returncha()
 {
     cout << "基类输出" << endl;
 }
-int Complex:: clac()
+int Complex::clac()
 {
-    return c1+c2;
+    return c1 + c2;
 }
-class Com:public Complex    //继承方法
+class Com : public Complex //继承方法
 {
-    private:
+private:
     int c3;
-    public:
-    Com(int x1,int x2,int x3):Complex(x1,x2),c3(x3){}//初始化函数
-    void returnchar()//覆盖基类的函数
+
+public:
+    Com(int x1, int x2, int x3) : Complex(x1, x2), c3(x3) {} //初始化函数
+    void returnchar()                                        //覆盖基类的函数
     {
         Complex::returncha(); //调用基类方法
         cout << "继承类输出" << endl;
     }
-
 };
 /*
-class letter
+class Letter
 {
     public:
     Com* lis[2];
@@ -60,24 +77,48 @@ class letter
     {
         cout << lis[1]->c1 << endl;
     }
-
 };
 */
 int main()
 {
-    Complex d1{1,2};Complex e1{2,4};Complex e2{6};
+    Complex d1{1, 2};
+    Complex e1{2, 4};
+    Complex e2{6};
     int re = d1.clac();
-    printf("%d\n",re);
-    d1.setc1(5);
-    printf("%d\n",d1.getc1());
-    cout << "继承方法测试"<<endl;
-    d1.returncha();//基类
-    cout <<"声明派生类后的调用" << endl;
-    Com c1{1,2,3};
-    c1.returnchar();//派生类
-    //letter l1;
-    //l1.lis[1]->setc1(1);
-    //l1.test_ptr();
-    
+    printf("%d\n", re);
+    d1.setc1(5); //调用接口改变私有变量的值
+    printf("%d\n", d1.getc1());
+    cout << "继承方法测试" << endl;
+    d1.returncha(); //基类
+    cout << "声明派生类后的调用" << endl;
+    Com c1{1, 2, 3};
+    c1.returnchar(); //派生类
+    // letter l1;
+    // l1.lis[1]->setc1(1);
+    // l1.test_ptr();
+    cout << (d1 + e2).getc1() << endl;
+    cout << (d1 - e1).getc2() << endl;
+    Base* p1 = new Test;//基类指针可以指向派生类
+    p1->funA();
+    delete p1;
+    //文件读写
+    vector<int> v;
+    ifstream srcfile("in.txt",ios::in);
+    ofstream dirfile("out.txt",ios::out);
+    int x;
+    while (srcfile >> x){
+        v.push_back(x);
+    }
+    //vector <int> cpt;
+    //cpt.push_back(1);
+    //cpt.push_back(2);
+    sort(v.begin(),v.end());
+    for (int i=0;i<v.size();i++){
+        dirfile << v[i] << " ";
+        //cout <<"2";
+        //cout << v[i];
+    }
+    srcfile.close();
+    dirfile.close();
     return 0;
 }
