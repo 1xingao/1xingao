@@ -2,8 +2,9 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 #include <algorithm> //包含sort函数
-#include<stdlib.h>
+#include <stdlib.h>
 using namespace std;
 
 class Base
@@ -57,26 +58,33 @@ int Complex::clac()
 }
 //函数模板
 template <class T>
-T maxelement(T a[],int size)
+T maxelement(T a[], int size)
 {
     T tempmax = a[0];
-    for (int i = 0;i<size;++i){
-        if (tempmax <a[i])
+    for (int i = 0; i < size; ++i)
+    {
+        if (tempmax < a[i])
             tempmax = a[i];
-    
     }
     return tempmax;
 }
-template<class T,class Pref>
+template <class T, class Pref>
 
-void Map(T s,T e,T x,Pref op)//op是函数名也是一个函数指针
+void Map(T s, T e, T x, Pref op) // op是函数名也是一个函数指针
 {
-    for(;s!=e;++s,++x){
+    for (; s != e; ++s, ++x)
+    {
         *x = op(*s);
     }
 }
-int sqre(int c){return c*c*c;}
-double sqre_double(double d){return d*d;}
+int sqre(int c)
+{
+    return c * c * c;
+}
+double sqre_double(double d)
+{
+    return d * d;
+}
 class Com : public Complex //继承方法
 {
 private:
@@ -104,15 +112,15 @@ class Letter
 */
 void function_template()
 {
-    int array[] {1,2,4,5,6,78,9};
-    int size = sizeof(array)/sizeof(array[0]);
-    int max_array = maxelement(array,size);
-    //maxelement<int>(array,size);这样直接给定T的替换类型
+    int array[]{1, 2, 4, 5, 6, 78, 9};
+    int size = sizeof(array) / sizeof(array[0]);
+    int max_array = maxelement(array, size);
+    // maxelement<int>(array,size);这样直接给定T的替换类型
     cout << max_array << endl;
-    int arra[5] {1,2,3,4,5},b[5];
-    double araa_dou[5] {1.2,1.31,1.3,1.4,1.11},b_dou[5];
-    Map(arra,arra+5,b,sqre);
-    cout << b[4] <<endl;
+    int arra[5]{1, 2, 3, 4, 5}, b[5];
+    double araa_dou[5]{1.2, 1.31, 1.3, 1.4, 1.11}, b_dou[5];
+    Map(arra, arra + 5, b, sqre);
+    cout << b[4] << endl;
 }
 void object_practice()
 {
@@ -162,28 +170,44 @@ void fileio_practice()
     dirfile.close();
 }
 //类模板
-template<class T1,class T2>
+template <class T1, class T2>
 class pair_re
 {
-    public:
+public:
     T1 key;
     T2 value;
-    pair_re(T1 k,T2 v):key(k),value(v){};
-    bool operator < (const pair_re<T1,T2> &p) const{return key <p.key;};
+    pair_re(T1 k, T2 v) : key(k), value(v){};
+    pair_re(){};
+    bool operator<(const pair_re<T1, T2> &p) const { return key < p.key; };
 };
-
+template <class t1,class t2>
+class pair_re_1: public pair_re<t2,t1>
+//此时也可以直接给定基类模板的类型，实例化的时候就不会参照派生模板实例化
+{
+    public:
+    t1 key_1;
+    t2 value_1;
+};
 void class_template()
 {
-    pair_re<string,int> student("tom",19);//类模板的实例化
-    cout<<student.key<<endl;
-    pair_re<int,double> student1(1,1.1);
-    cout<<student1.key <<endl;
+    pair_re<string, int> student("tom", 19); //类模板的实例化
+    cout << student.key << endl;
+    pair_re<int, double> student1(1, 1.1);
+    cout << student1.key << endl;
+    pair_re_1<int ,double>obj1;//此时是由类模板派生类模板，但是实例化的两个对象t1,t2的类型是相反的
+    //分别是pair_re<double,int>和pair_re_1<int,double>
+    
+}
+void stl_use()
+{
+    string str1("string");
 }
 int main()
 {
-    object_practice(); // object test function
-    fileio_practice(); // file test function
-    function_template();//function template test function
-    class_template(); //class template test function
+    object_practice();   // object test function
+    fileio_practice();   // file test function
+    function_template(); // function template test function
+    class_template();    // class template test function
+    stl_use();
     return 0;
 }
