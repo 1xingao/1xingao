@@ -1,5 +1,4 @@
 # @before-stub-for-debug-begin
-from python3problem66 import *
 from typing import *
 # @before-stub-for-debug-end
 
@@ -11,7 +10,6 @@ from typing import *
 
 # @lc code=start
 
-from typing import List
 
 
 class Solution:
@@ -24,10 +22,11 @@ class Solution:
                 digits[lenth-1] = 0
                 digits.append(1)
                 break
-            if digits[i] >=10:
-                digits[i] -=10
+            if digits[i] >= 10:
+                digits[i] -= 10
                 digits[i+1] +=1
-        return digits.reverse()
+        digits.reverse()
+        return digits
 
 # @lc code=end
 
