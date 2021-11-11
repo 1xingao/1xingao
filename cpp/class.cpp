@@ -36,7 +36,7 @@ public:
     int clac();
     void setc1(int data) { c1 = data; } //提供对象外访问对象私有变量的接口
     int getc1() { return c1; }
-    
+
     Complex operator+(const Complex &b) //运算符重载再对象里面时候少一个参数
     {
         return Complex(c1 + b.c1, c2 + b.c2);
@@ -65,7 +65,8 @@ T maxelement(T a[], int size)
     T tempmax = a[0];
     for (int i = 0; i < size; ++i)
     {
-        if (tempmax < a[i]) tempmax = a[i];
+        if (tempmax < a[i])
+            tempmax = a[i];
     }
     return tempmax;
 }
@@ -147,23 +148,23 @@ void object_practice()
 }
 class class_function
 {
-    //private:
-    //int i1,i2,i3;
-    public:
-    //class_function(int x1,int x2,int x3):i1(x1),i2(x2),i3(x3){}
-    //double operator()()
+    // private:
+    // int i1,i2,i3;
+public:
+    // class_function(int x1,int x2,int x3):i1(x1),i2(x2),i3(x3){}
+    // double operator()()
     //{
-    //    return (double)(i1+i2+i3)/3;
-    //}
-    double operator()(conint i1,conint i2,conint i3)
+    //     return (double)(i1+i2+i3)/3;
+    // }
+    double operator()(conint i1, conint i2, conint i3)
     {
-        return (double)(i1+i2+i3)/3;
+        return (double)(i1 + i2 + i3) / 3;
     }
 };
 void stl_fun()
 {
     class_function arrag;
-    cout<<arrag(1,2,3)<<endl;
+    cout << arrag(1, 2, 3) << endl;
 }
 void fileio_practice()
 {
@@ -200,11 +201,11 @@ public:
     pair_re(){};
     bool operator<(const pair_re<T1, T2> &p) const { return key < p.key; };
 };
-template <class t1,class t2>
-class pair_re_1: public pair_re<t2,t1>
+template <class t1, class t2>
+class pair_re_1 : public pair_re<t2, t1>
 //此时也可以直接给定基类模板的类型，实例化的时候就不会参照派生模板实例化
 {
-    public:
+public:
     t1 key_1;
     t2 value_1;
 };
@@ -214,38 +215,37 @@ void class_template()
     cout << student.key << endl;
     pair_re<int, double> student1(1, 1.1);
     cout << student1.key << endl;
-    pair_re_1<int ,double>obj1;//此时是由类模板派生类模板，但是实例化的两个对象t1,t2的类型是相反的
+    pair_re_1<int, double> obj1; //此时是由类模板派生类模板，但是实例化的两个对象t1,t2的类型是相反的
     //分别是pair_re<double,int>和pair_re_1<int,double>
-    
 }
 void string_te()
 {
     string str1("string");
     int len = str1.length();
     string bjec;
-    //cin >> bjec;//getline(cin,s);
+    // cin >> bjec;//getline(cin,s);
     string str2;
-    str2 = str1; 
-    //str2.assign(str1);复制str2.assign(str1,1,3);
+    str2 = str1;
+    // str2.assign(str1);复制str2.assign(str1,1,3);
     //从第一个下标复制三个字符到str2
     str2[1] = str1[2];
     //单独复制,at(i)函数用于访问每一个元素
     string str3;
-    str3 = str1 +str2;//将str2拼接
-    //str3.apprnd(str1,3,str11.size());后两个参数可选
-    int reture_bool = str3.compare(1,2,str2,2,3);
-    string str4 = str2.substr(1,5);
+    str3 = str1 + str2; //将str2拼接
+    // str3.apprnd(str1,3,str11.size());后两个参数可选
+    int reture_bool = str3.compare(1, 2, str2, 2, 3);
+    string str4 = str2.substr(1, 5);
     //返回一个字符串从1开始的五个字符
-    //str2.find("str");str2.rfind("str");后者是从后往前找
-    str3.erase(2);//删除下标2后边的字符
-    str2.replace(2,3,"1234");
+    // str2.find("str");str2.rfind("str");后者是从后往前找
+    str3.erase(2); //删除下标2后边的字符
+    str2.replace(2, 3, "1234");
     //将str2下标2开始3个字符换成123
-    str1.insert(2,"qwe");
-    cout << str1 <<" "<<str2<<" " <<" "<< str3<< endl;
+    str1.insert(2, "qwe");
+    cout << str1 << " " << str2 << " "
+         << " " << str3 << endl;
     cout << str4 << endl;
     cout << reture_bool << endl;
-    //c_str()函数可以返回一个char*类型
-
+    // c_str()函数可以返回一个char*类型
 }
 int main()
 {
