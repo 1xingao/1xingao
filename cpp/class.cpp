@@ -73,8 +73,7 @@ T maxelement(T a[], int size)
 template <class T, class Pref>
 void Map(T s, T e, T x, Pref op) // op是函数名也是一个函数指针
 {
-    for (; s != e; ++s, ++x)
-    {
+    for (; s != e; ++s, ++x){
         *x = op(*s);
     }
 }

@@ -28,7 +28,7 @@ def ascii_art(file):
     im = np.array(im)
 
     # Defines all the symbols in ascending order that will form the final ascii
-    symbols = np.array(list(" .-vM"))
+    symbols = np.array(list(" .-vOG"))
 
     # Normalize minimum and maximum to [0, max_symbol_index)
     im = (im - im.min()) / (im.max() - im.min()) * (symbols.size - 1)
