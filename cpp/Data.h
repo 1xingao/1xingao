@@ -1,4 +1,4 @@
-#pragma once
+#pragma once  //确保头文件只被包含一次
 #include<iostream>
 #include<string>
 class Data
