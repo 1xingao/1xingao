@@ -20,16 +20,13 @@ class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
         if(!root->left&&!root->right){return true;}
-        if(root->left==nullptr||root->right==nullptr){return false;}
-        if(root->left->val==root->right->val){return check(root->left,root->right);}
-        return false;
-        
+        if(!root->left||!root->right){return false;}
+        return check(root->left,root->right)&&root->left->val==root->right->val;
     }
     bool check(TreeNode* l,TreeNode* r)
     {
         if(!l&&!r){return true;}//左右子树都不存在对称
         if(!l || !r){return false;}//左右子树有一个不存在则不对称
-        //两点的数据相等并且左子树
         return l->val==r->val&&check(l->left,r->right)&&check(l->right,r->left);
     }
 };
