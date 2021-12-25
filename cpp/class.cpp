@@ -248,12 +248,12 @@ void string_te()
 }
 int main()
 {
-    /*
+    
     object_practice();   // object test function
     fileio_practice();   // file test function
     function_template(); // function template test function
     class_template();    // class template test function
-    */
+    
     string_te();
     stl_fun();
     return 0;
