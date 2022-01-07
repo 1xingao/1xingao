@@ -64,7 +64,7 @@ void TwoPathInsert(SList &L){
 				*(A+cur)=L.Score[i];
 				j++;
 				final++;
-				}	
+				}
 		}
         else{
             if(L.Score[i]<A[first]){

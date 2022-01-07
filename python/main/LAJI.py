@@ -1,6 +1,6 @@
 #写各种脚本的文件
-#作者：xinao-seven
-#用处：狗子的机组作业
+#作者:xinao-seven
+#用处:狗子的机组作业
 
 import xlwt
 

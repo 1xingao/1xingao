@@ -28,8 +28,8 @@ def main():
         peo_c = base.ran_dom()
 
         base.battle(peo_c, user)
-        print("当前游戏比分：")
-        print("电脑1（随机策略）：",base.my_lost,"电脑2（随机与最少交替使用）：",base.my_win)
+        print("当前游戏比分:")
+        print("电脑1（随机策略）:",base.my_lost,"电脑2（随机与最少交替使用）:",base.my_win)
         if base.count > 2000:
             break
 

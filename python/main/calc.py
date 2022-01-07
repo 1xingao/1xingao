@@ -33,19 +33,19 @@ u = int(ba_defang(data_u)*1000)/1000
 dela = int(cac(data_v,data_u)*1000)/1000
 dea2 = int(ba_fangping(data_v)*100)/100
 k = (ba_defang(data_v)*ba_defang(data_u) - cac(data_v,data_u) ) /( math.pow(ba_defang(data_v),2) - ba_fangping(data_v))
-print("理论斜率：",k)
-print("v平均：",v)
-print("Us平均：",u)
-print("乘积平均：",dela)
-print("先^2平均：",dea2)
+print("理论斜率:",k)
+print("v平均:",v)
+print("Us平均:",u)
+print("乘积平均:",dela)
+print("先^2平均:",dea2)
 h0 = 6.626
 #kd = (ba_defang(data_v)*ba_defang(data_u) - cac(data_v,data_u) ) /( math.pow(ba_defang(data_v),2) - ba_fangping(data_v))
 kd = (v*u - dela )/(math.pow(v,2) - dea2)
-print("实际计算k：",(int(kd*1000)/1000))
+print("实际计算k:",(int(kd*1000)/1000))
 h1 = (int(kd*1000)/1000)*e
 
 h1 = h1*-10
 h1 = (int(h1*1000))/1000
 
-print("绝对误差：",abs(h1-h0))
-print("相对误差：",(int((abs(h1-h0)/h0)*1000))/10,"%")
+print("绝对误差:",abs(h1-h0))
+print("相对误差:",(int((abs(h1-h0)/h0)*1000))/10,"%")

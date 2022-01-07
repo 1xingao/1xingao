@@ -49,10 +49,10 @@ public:
 	//游戏结果统计
 	virtual void result()//(const Game &game)
 	{
-		cout << "目前游戏结果统计：" << endl;
-		cout << "玩家胜场：" << vplayer << endl;
-		cout << "电脑胜场：" << vcomputer << endl;
-		cout << "平局次数：" << draw << endl;
+		cout << "目前游戏结果统计:" << endl;
+		cout << "玩家胜场:" << vplayer << endl;
+		cout << "电脑胜场:" << vcomputer << endl;
+		cout << "平局次数:" << draw << endl;
 
 	}
 	//打印双方的出拳
@@ -80,7 +80,7 @@ public:
 	}
 
 };
-//第二种：使用赢得上一轮策略
+//第二种:使用赢得上一轮策略
 class Sstraregy :public Game
 {
 public:
@@ -95,7 +95,7 @@ public:
 		return 0;
 	}
 };
-//第三种：使用目前为止使用招数最少的策略
+//第三种:使用目前为止使用招数最少的策略
 class Tstraregy :public Game
 {
 public:

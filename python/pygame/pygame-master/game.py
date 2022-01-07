@@ -48,7 +48,7 @@ class Sunflower(Plant):
         #5 时间计数器
         self.time_count = 0
 
-    #5 新增功能：生成阳光
+    #5 新增功能:生成阳光
     def produce_money(self):
         self.time_count += 1
         if self.time_count == 25:
