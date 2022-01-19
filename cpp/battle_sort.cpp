@@ -78,7 +78,7 @@ void test_battle()
 		QSort(L8,1,L8.length);
 		end = clock();
 		times8.push_back(end-start);//快速排序
-	}	
+	}
 	cout<<"简单选择排序      耗时:  "<<"\t";
 	for(int i=0;i<times.size();i++){
 	 	cout<<times[i]<<"ms"<<"\t";
