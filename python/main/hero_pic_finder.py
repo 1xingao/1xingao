@@ -48,8 +48,6 @@ if __name__ == "__main__":
     name_list = init_file_name(data_list)
     url_list = init_url(data_list)
     get_pic(url_list,name_list)
-#此爬虫不需要解析网页，是直接拼接图片的url然后爬取，本身数据并不存在于网页的html中
-
 #一堆没用的网页select
 #body > div.wrapper > div.zk-con1.zk-con > div > div > div.pic-pf > ul > li:nth-child(1)
 #body > div.wrapper > div.zk-con1.zk-con > div > div > div.pic-pf > ul > li:nth-child(2) > i
