@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 from PIL import Image
-
+from scipy import constants
 #numpy的练习程序
 im = Image.open("assist/keli.jpg")
 
@@ -82,5 +82,10 @@ mp_18  = mp_17.view()
 #此方法创建一个数据i相同的新数组对象
 
 
-
-
+k = np.array([[1,2,3]])
+x = np.diag([1,2,3])
+print(np.dot(k,x))
+c = np.dot(k,x)
+print(np.dot(c,k.T))
+print(k@x@k.T)
+print(k.T)
