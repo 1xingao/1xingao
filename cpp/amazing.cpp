@@ -2,9 +2,10 @@
 #include<unordered_map>
 #include<iostream>
 #include<algorithm>
-//保存各种花式操作
+#include<queue>
+//自定义sort排序方式
 using namespace std;
-class Solution {
+class Solution1 {
 public:
     string frequencySort(string s) {
         unordered_map<char,int>hash;
@@ -36,3 +37,82 @@ public:
         return (i < j);
     }
 };
+//快速排序
+void qsort(vector<int>& nums,int begin,int end)
+    {
+        if(begin<end){
+            int key = nums[begin];
+            int i = begin;
+            int j = end;
+            while(i<j){
+                while(i<j&&nums[j]>key){
+                    j--;
+                }
+                if(i<j){
+                    nums[i] = nums[j];
+                    i++;
+                }
+                while(i<j&&nums[i]<key){
+                    i++;
+                }
+                if(i<j){
+                    nums[j] = nums[i];
+                    j--;
+                }
+            }
+            nums[i] = key;
+            qsort(nums,begin,i-1);
+            qsort(nums,i+1,end);
+
+        }
+    }
+//广度优先遍历
+struct TreeNode {
+      int val;
+      TreeNode *left;
+      TreeNode *right;
+      TreeNode() : val(0), left(nullptr), right(nullptr) {}
+      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+std::vector<int> bfs(TreeNode* root)
+{
+    std::vector<int> re;
+    std::queue<TreeNode*> nodequeue;
+    nodequeue.push(root);
+    TreeNode* node;
+    while(!nodequeue.empty()){
+
+        node = nodequeue.front();
+        nodequeue.pop();
+        re.push_back(node->val);
+
+        if(node->left!=nullptr){
+            nodequeue.push(node->left);
+        }
+        if(node->right!=nullptr){
+            nodequeue.push(node->right);
+        }
+    }
+    return re;
+}
+//二分查找
+class Solution3 {
+public:
+    int search(vector<int>& nums, int target) {
+        int low = 0, high = nums.size() - 1;
+        while(low <= high){
+            int mid = (high - low) / 2 + low;
+            int num = nums[mid];
+            if (num == target) {
+                return mid;
+            } else if (num > target) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return -1;
+    }
+}

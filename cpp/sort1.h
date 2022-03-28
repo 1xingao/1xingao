@@ -45,7 +45,7 @@ void ShellInsert(SList_1 &L,int dk){
 			L.R[j+dk]=L.R[j];
 		L.R[j+dk]=L.R[0];
 		}
-}
+} 
 void ShellSort(SList_1 &L,int dlta[],int t){
 	for(int k=0;k<t;k++)
 		ShellInsert(L,dlta[k]);
