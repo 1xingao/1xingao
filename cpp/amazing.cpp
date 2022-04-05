@@ -60,7 +60,7 @@ void qsort(vector<int>& nums,int begin,int end)
                     j--;
                 }
             }
-            nums[i] = key;
+            nums[i] = key;//先移动j后移动i
             qsort(nums,begin,i-1);
             qsort(nums,i+1,end);
 

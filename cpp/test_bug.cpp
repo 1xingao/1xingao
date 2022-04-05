@@ -1,5 +1,6 @@
 #include<string>
 #include<iostream>
+#include<vector>
 using namespace std;
 class Solution {
 public:
@@ -25,12 +26,40 @@ public:
     }
     
 };
+
+class Solution2 {
+public:
+    int minSubArrayLen(int target, vector<int>& nums) {
+        int len = 0;
+        int left = 0;
+        int sum = 0;
+        // for(int i=0;i<nums.size();++i){
+        //     sum+=nums[i];
+        //     while(sum>=target){
+        //         len = len==0?i-left+1:min(i-left+1,len);
+        //         sum-=nums[left++];
+        //     }
+        // }
+        // return len;
+        for(int i =0;i<nums.size();i++){
+            while(sum<target){
+                sum+=nums[left];
+                if(left<nums.size()){
+                    left++;
+                }
+            }
+            len = len==0?left-i:min(left-i,len);
+            sum-=nums[i];
+        }
+        return len;
+    }
+};
 int main()
 {
-    Solution s;
-    string st ="TFFT";
-    int k = 1;
-    int max_s = s.maxConsecutiveAnswers(st,k);
-    cout<<max_s;
+    Solution2 s2;
+    int target = 2;
+    vector<int>test{1,4,4};
+    int len = s2.minSubArrayLen(target,test);
+    cout<<len;
     return 0;
 }
