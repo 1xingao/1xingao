@@ -13,9 +13,10 @@ speed_limit_enabled=false
 bili_ini_short = """[General]
 channel=14
 cps=bilibili
-game_version=2.5.0
+game_version=2.6.0
 sub_channel=0
 plugin_sdk_version=3.5.0
+plugin_5_version=2.6.0
 """
 mihoyo_ini = """[launcher]
 cps=mihoyo
@@ -31,9 +32,11 @@ speed_limit_enabled=false"""
 mihoyo_ini_short = """[General]
 channel=1
 cps=mihoyo
-game_version=2.5.0
+game_version=2.6.0
 sub_channel=1
-plugin_sdk_version=3.5.0"""
+plugin_sdk_version=3.5.0
+plugin_5_version=2.6.0
+"""
 #每次更新需要更改game_version和plugin_sdk_version的版本号
 def Change_To_Bili():
     with open("D:\\Genshin Impact\\Genshin Impact Game\\config.ini","w") as f_bili_short:

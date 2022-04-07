@@ -1,8 +1,4 @@
-#include<vector>
-#include<unordered_map>
-#include<iostream>
-#include<algorithm>
-#include<queue>
+#include<bits/stdc++.h>
 //自定义sort排序方式
 using namespace std;
 class Solution1 {
@@ -116,3 +112,66 @@ public:
         return -1;
     }
 }
+//归并排序
+class Solution4 {
+public:
+    void merge(vector<int>& nums, int begin, int mid, int end) {
+        vector<int> tmp(end - begin + 1);
+        int i = begin, j = mid + 1, k = 0;
+        while(i <= mid && j <= end){
+            if(nums[i] < nums[j]){
+                tmp[k++] = nums[i++];
+            }else{
+                tmp[k++] = nums[j++];
+            }
+        }
+        while(i <= mid){
+            tmp[k++] = nums[i++];
+        }
+        while(j <= end){
+            tmp[k++] = nums[j++];
+        }
+        for(int i = 0; i < tmp.size(); i++){
+            nums[begin + i] = tmp[i];
+        }
+    }
+    void mergeSort(vector<int>& nums, int begin, int end) {
+        if(begin < end){
+            int mid = (end - begin) / 2 + begin;
+            mergeSort(nums, begin, mid);
+            mergeSort(nums, mid + 1, end);
+            merge(nums, begin, mid, end);
+        }
+    }
+    void mergeSort(vector<int>& nums) {
+        mergeSort(nums, 0, nums.size() - 1);
+    }
+};
+//查找公用字符
+class Solution5{
+public:
+    vector<string> commonChars(vector<string>& words) {
+        vector<string>res;
+        int hash[26] = {0};//用于存储最小出现次数的哈希表
+        for(int i=0;i<words[0].size();i++){
+            hash[words[0][i]-'a']++;//第一个作为初始化
+        }
+        for(int j=1;j<words.size();j++){
+            int arr[26] = {0};
+            for(int k=0;k<words[j].size();k++){//每次遍历会找出这个str每个字符出现的次数
+                arr[words[j][k]-'a']++;
+            }
+            for(int c=0;c<26;c++){
+                hash[c] = min(hash[c],arr[c]);//获取最小次数，因为字符可以重复
+            }
+        }
+        for(int i=0;i<26;i++){
+            while(hash[i]){//每个字符不止出现一次
+                string s(1, i + 'a');//char->string
+                res.push_back(s);
+                hash[i]--;
+            }
+        }
+        return res;
+    }
+};
