@@ -91,12 +91,24 @@ public:
         return res;
     }
 };
+void getnext(int* next,const string& s){
+        int j = 0;
+        next[0] = 0;
+        for(int i = 1;i < s.size();i++){
+            while(j > 0 && s[i]!=s[j]){
+                j = next[j-1];
+            }
+            if(s[i]==s[j]){
+                j++;
+            }
+            next[i]==j;
+        }
+    }
 int main()
 {
-    Solution3 test;
-    vector<int> trs = {-1,0,1,2,-1,-4};
-    //-4,-1,-1,0,1,2
-    vector<vector<int>>res =  test.threeSum(trs);
-    cout<<res.size();
+    string s1= {"issip"};
+    int next[s1.size()];
+    getnext(next,s1);
+    cout<<next[2];
     return 0;
 }
