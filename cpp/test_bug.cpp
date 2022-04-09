@@ -1,6 +1,4 @@
-#include<string>
-#include<iostream>
-#include<vector>
+#include<bits/stdc++.h>
 using namespace std;
 class Solution {
 public:
@@ -54,12 +52,51 @@ public:
         return len;
     }
 };
+class Solution3 {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        vector<vector<int>> res;
+        sort(nums.begin(),nums.end());
+        int n=nums.size();
+        for(int left=0;left<n-2;left++){
+            int mid = left+1;
+            int right = n-1;
+            if(nums[left]>0){
+                return res;//如果最左边数大于零则之后都没有满足的
+            }
+            if(left>0&&nums[left]==nums[left-1]){//left去重
+                continue;
+            }
+            int target = -nums[left];
+            while(mid<right){
+                if(nums[mid]+nums[right]==target){
+                    res.push_back(vector<int>{nums[left],nums[right],nums[mid]});
+                    
+                    while(right>mid&&nums[right]==nums[right-1]){
+                        right--;
+                    }
+                    while(right>mid&&nums[mid]==nums[mid+1]){
+                        mid++;
+                    }
+                    right--;
+                    mid++;
+                }else if(nums[mid]+nums[right]>target){
+                    right--;
+                }else{
+                    mid++;
+                }
+            }
+            
+        }
+        return res;
+    }
+};
 int main()
 {
-    Solution2 s2;
-    int target = 2;
-    vector<int>test{1,4,4};
-    int len = s2.minSubArrayLen(target,test);
-    cout<<len;
+    Solution3 test;
+    vector<int> trs = {-1,0,1,2,-1,-4};
+    //-4,-1,-1,0,1,2
+    vector<vector<int>>res =  test.threeSum(trs);
+    cout<<res.size();
     return 0;
 }

@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h> 
 //自定义sort排序方式
 using namespace std;
 class Solution1 {
@@ -111,7 +111,7 @@ public:
         }
         return -1;
     }
-}
+};
 //归并排序
 class Solution4 {
 public:
