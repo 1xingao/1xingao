@@ -31,7 +31,7 @@ public:
             return 0;
         }
         int next[needle.size()];
-        getnext(next, needle);
+        getNext(next, needle);
         int j = 0;
         for (int i = 0; i < haystack.size(); i++)
         {
@@ -49,6 +49,19 @@ public:
             }
         }
         return -1;
+    }
+    //判断重复的子字符串
+    bool repeatedSubstringPattern(string s) {
+        if(s.size()==0){
+            return true;
+        }
+        int len = s.size();
+        int next[s.size()];
+        getNext(next,s);
+        if(next[len-1]!=0&&len%(len-next[len-1])==0){
+            return true;
+        }
+        return false;
     }
 };
 

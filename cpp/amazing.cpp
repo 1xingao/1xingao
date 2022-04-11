@@ -147,7 +147,7 @@ public:
         mergeSort(nums, 0, nums.size() - 1);
     }
 };
-//查找公用字符
+//查找公用字符(哈希表)
 class Solution5{
 public:
     vector<string> commonChars(vector<string>& words) {
@@ -171,6 +171,66 @@ public:
                 res.push_back(s);
                 hash[i]--;
             }
+        }
+        return res;
+    }
+};
+
+//单调队列递减(左边值大于右边)
+class Myqueue{
+    public:
+    deque<int> que;
+    void pop(int value)
+    {
+        if(!que.empty()&&que.front()==value){
+            que.pop_front();
+        }
+    }
+    void push(int value)
+    {
+        while(!que.empty()&&que.back()< value){
+            que.pop_back();
+        }
+        que.push_back(value);
+    }
+    int front()
+    {
+        return que.front();
+    }
+};
+//优先队列
+class Solution6 {
+public:
+//小顶堆
+    priority_queue <int,vector<int>,greater<int> > q;
+//大顶堆
+    priority_queue <int,vector<int>,less<int> >q;
+//默认大顶堆
+    priority_queue<int> a;
+//自定义函数比较
+    vector<int> topKFrequent(vector<int>& nums, int k) {
+        
+        struct mycmp{
+            bool operator()( const pair<int,int>& p1,const pair<int,int>& p2){
+                return p1.second>p2.second;
+            }
+        };
+        unordered_map<int,int> hash;
+        for(int i:nums){
+            hash[i]++;
+        }
+        priority_queue<pair<int,int>,vector<pair<int,int>>,mycmp> que;
+        //小顶堆的构建三个参数分别是类型，底层类型，自定义比较函数
+        for(auto& a:hash){
+            que.push(a);
+            if(que.size()>k){
+                que.pop();
+            }
+        }
+        vector<int>res;
+        while(!que.empty()){
+            res.emplace_back(que.top().first);
+            que.pop();
         }
         return res;
     }
