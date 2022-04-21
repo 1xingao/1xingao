@@ -18,6 +18,10 @@ with open("M_20220419.TXT","r") as fp:
         li[-3] = str(tim)
         li.append("\n")
         fil.append(li)
+        for i in range(len(li)):
+            if i==len(li)-2:
+                break
+            li[i]+=","
         
 print(fil)
 with open("new.txt","w") as f:
