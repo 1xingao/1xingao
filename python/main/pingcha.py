@@ -1,4 +1,21 @@
+
+from typing import Any
 import numpy as np
+class Sulation:
+    def tiaojian(a,w,p)->Any:
+        a = np.matrix(a)
+        w = np.matrix(w)
+        p = np.matrix(p)
+        w = w.T
+        naa = a@p.I@a.T
+        k = -naa.I@w
+        v = p.I@a.T@k
+        return v
+    def fucantiaojian(a,w,p,b):
+        pass
+    def jianjie(b,l,p):
+        pass
+        
 # k = np.array([1,3,-2])
 
 # x = np.array([[3,0,-1],[0,2,1/2],[-1,1/2,1]])
@@ -67,23 +84,56 @@ import numpy as np
 # print(v)
 
 #6.3.23
-a = np.zeros((4,4))
-a[0][0] = a[1][0] = a[1][2] = a[2][0] = a[3][2] =1
-a[2][1] = a[3][3] = -1
-a = np.matrix(a)
-_b = np.array([-1,0,0,0])
-_w = np.array([0,3,-2,2])
-p = np.diag([1,1,1,1])
-_b = np.matrix(_b)
-_w = np.matrix(_w)
-b = _b.T
-w = _w.T
-p = np.matrix(p)
-naa = a@p.I@a.T
-nbb = b.T@naa.I@b
-x = -nbb.I@b.T@naa.I@w
-print(x)
-k = -naa.I@(b@x+w)
-print(k)
-v = p.I@a.T@k
-print(v)
+# a = np.zeros((4,4))
+# a[0][0] = a[1][0] = a[1][2] = a[2][0] = a[3][2] =1
+# a[2][1] = a[3][3] = -1
+# a = np.matrix(a)
+# _b = np.array([-1,0,0,0])
+# _w = np.array([0,3,-2,2])
+# p = np.diag([1,1,1,1])
+# _b = np.matrix(_b)
+# _w = np.matrix(_w)
+# b = _b.T
+# w = _w.T
+# p = np.matrix(p)
+# naa = a@p.I@a.T
+# nbb = b.T@naa.I@b
+# x = -nbb.I@b.T@naa.I@w
+# print(x)
+# k = -naa.I@(b@x+w)
+# print(k)
+# v = p.I@a.T@k
+# print(v)
+
+#7.2.05
+b = np.zeros((4,2))
+b[0][0] = b[1][1] = b[3][0] = b[3][1] = 1
+b[2][0] = b[2][1] = -1
+p = np.diag([1,2,1,1])
+l = np.array([0,0,-10,6])
+l = np.matrix(l)
+l = l.T
+nbb = b.T@p@b
+nbb = np.matrix(nbb)
+w = b.T@p@l
+print(nbb.I@w)
+
+#7.2.07
+# b = np.zeros((6,3))
+# b[0][0] = b[1][1] = b[2][2] = b[5][2] = 1
+# b[1][0] = b[2][1] = b[3][2] = b[4][1] = b[5][0] = -1
+# b = np.matrix(b)
+# p = np.diag([1,1,1,1,1,1])
+# p = np.matrix(p)
+# l = np.array([0,0,0,-9,6,4])
+# l = np.matrix(l)
+# l = l.T 
+# nbb = b.T@p@b
+# w = b.T@p@l
+# print(w)
+# print(nbb)
+# x_ = nbb.I@w
+# print(x_)
+# v = b@x_-l
+# print(v)
+#计算弧度

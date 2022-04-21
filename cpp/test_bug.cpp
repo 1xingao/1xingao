@@ -52,6 +52,7 @@ public:
         return len;
     }
 };
+//三数之和
 class Solution3 {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
@@ -91,24 +92,9 @@ public:
         return res;
     }
 };
-void getnext(int* next,const string& s){
-        int j = 0;
-        next[0] = 0;
-        for(int i = 1;i < s.size();i++){
-            while(j > 0 && s[i]!=s[j]){
-                j = next[j-1];
-            }
-            if(s[i]==s[j]){
-                j++;
-            }
-            next[i]==j;
-        }
-    }
+
 int main()
 {
-    string s1= {"issip"};
-    int next[s1.size()];
-    getnext(next,s1);
-    cout<<next[2];
+    
     return 0;
 }

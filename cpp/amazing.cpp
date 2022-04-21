@@ -235,3 +235,38 @@ public:
         return res;
     }
 };
+//回溯算法去重
+//回溯算法去重要求同一行使用过的不能使用，但是同一树枝使用过的可以使用
+class Solution7 {
+public:
+    vector<vector<int>> res;
+    vector<int> temp;
+    void dfs(vector<int>& nums,int start,vector<bool> used)
+    {
+        if(start>nums.size()){
+            return;
+        }
+        for(int i=start;i<nums.size();i++){
+            if(i>0&&nums[i]==nums[i-1]&&used[i-1]==false){//不用used直接让i！=start也行
+                continue;
+            }
+            // used[i - 1] == true，说明同一树枝candidates[i - 1]使用过
+            // used[i - 1] == false，说明同一树层candidates[i - 1]使用过
+            // 而我们要对同一树层使用过的元素进行跳过
+            //上边传递下来的i-1一定是true，传参是i+1
+            temp.push_back(nums[i]);
+            used[i] = true;
+            res.push_back(temp);
+            dfs(nums,i+1,used);
+            used[i] = false;
+            temp.pop_back();
+        }
+    }
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        vector<bool> used(nums.size(), false);//用于保存该数是否使用过
+        dfs(nums,0,used);
+        res.push_back(vector<int>{});//无关，这是求子集所以加一个空集
+        return res;
+    }
+};
