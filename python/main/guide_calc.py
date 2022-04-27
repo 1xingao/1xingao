@@ -1,6 +1,5 @@
 from ctypes import set_last_error
 import math
-
 #获取所输入的度分秒转化为纯度
 def getradian(a,b,c):
     sum = 0
@@ -13,7 +12,6 @@ def getnewcoordinate(n,s):#x,y为经纬度，s为距离
     new_x = s*math.cos(math.radians(n))
     new_y = s*math.sin(math.radians(n))
     return new_x,new_y
-
 a_list = [113,136,78,238,213,94,146,161,87,198]
 b_list = [32,0,4,37,19,43,41,11,33,36]
 c_list = [53,25,36,22,41,44,50,2,54,44]
@@ -35,7 +33,6 @@ direction = math.degrees(direction)#转化为角度
 #     sum = 0
 #     sum+=i[1]
 # # print(sum)
-
 #计算距离
 def getdistance(x1,y1,x2,y2):
     return math.sqrt((x1-x2)**2+(y1-y2)**2)

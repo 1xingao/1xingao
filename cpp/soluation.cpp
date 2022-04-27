@@ -62,6 +62,26 @@ void qsort(vector<int>& nums,int begin,int end)
 
         }
     }
+//二叉树的通用删除节点的方法
+class Solution9 {
+public:
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if (root == nullptr) return root;
+        if (root->val == key) {
+            if (root->right == nullptr) { // 这里第二次操作目标值：最终删除的作用
+                return root->left;
+            }
+            TreeNode *cur = root->right;
+            while (cur->left) {
+                cur = cur->left;
+            }
+            swap(root->val, cur->val); // 这里第一次操作目标值：交换目标值其右子树最左面节点。
+        }
+        root->left = deleteNode(root->left, key);
+        root->right = deleteNode(root->right, key);
+        return root;
+    }
+};
 //广度优先遍历
 struct TreeNode {
       int val;
@@ -267,6 +287,110 @@ public:
         vector<bool> used(nums.size(), false);//用于保存该数是否使用过
         dfs(nums,0,used);
         res.push_back(vector<int>{});//无关，这是求子集所以加一个空集
+        return res;
+    }
+};
+//二叉搜索树的插入
+class Solution8 {
+public:
+//插入
+    TreeNode* insertIntoBST(TreeNode* root, int val) {
+        if(root == nullptr){
+            TreeNode* node = new TreeNode(val);
+            return node;
+        }
+        if(root->val > val){
+            root->left = insertIntoBST(root->left,val);
+        }
+        if(root->val < val ){
+            root->right = insertIntoBST(root->right,val);
+        }
+        return root;     
+    }
+//删除
+    TreeNode* deleteNode(TreeNode* root, int key) {
+        if (root == nullptr) return root; // 第一种情况：没找到删除的节点，遍历到空节点直接返回了
+        if (root->val == key) {
+            // 第二种情况：左右孩子都为空（叶子节点），直接删除节点， 返回NULL为根节点
+            if (root->left == nullptr && root->right == nullptr) {
+                ///! 内存释放
+                delete root;
+                return nullptr;
+            }
+            // 第三种情况：其左孩子为空，右孩子不为空，删除节点，右孩子补位 ，返回右孩子为根节点
+            else if (root->left == nullptr) {
+                auto retNode = root->right;
+                ///! 内存释放
+                delete root;
+                return retNode;
+            }
+            // 第四种情况：其右孩子为空，左孩子不为空，删除节点，左孩子补位，返回左孩子为根节点
+            else if (root->right == nullptr) {
+                auto retNode = root->left;
+                ///! 内存释放
+                delete root;
+                return retNode;
+            }
+            // 第五种情况：左右孩子节点都不为空，则将删除节点的左子树放到删除节点的右子树的最左面节点的左孩子的位置
+            // 并返回删除节点右孩子为新的根节点。
+            else {
+                TreeNode* cur = root->right; // 找右子树最左面的节点
+                while(cur->left != nullptr) {
+                    cur = cur->left;
+                }
+                cur->left = root->left; // 把要删除的节点（root）左子树放在cur的左孩子的位置
+                TreeNode* tmp = root;   // 把root节点保存一下，下面来删除
+                root = root->right;     // 返回旧root的右孩子作为新root
+                delete tmp;             // 释放节点内存（这里不写也可以，但C++最好手动释放一下吧）
+                return root;
+            }
+        }
+        if (root->val > key) root->left = deleteNode(root->left, key);
+        if (root->val < key) root->right = deleteNode(root->right, key);
+        return root;
+    }
+};
+//N皇后问题
+class Nqueen
+{
+    public:
+    vector<vector<string>> res;
+    bool isSet(int n,int row,int col,vector<string> checkerboard)//检查函数，检测放在这个位值是否合法
+    {
+        for(int i=0;i<row;i++){
+            if(checkerboard[i][col] == 'Q'){//检查列
+                return false;
+            }
+        }
+        for(int i=row-1,j=col-1;i>=0&&j>=0;i--,j--){
+            if(checkerboard[i][j] == 'Q'){//左对角
+                return false;
+            }
+        }
+        for(int i=row-1,j = col+1;i>=0&&j<n;i--,j++){
+            if(checkerboard[i][j] == 'Q'){//右对角
+                return false;
+            }
+        }
+        return true;
+    }
+    void dfs(int n,int row,vector<string>& checkerboard)
+    {
+        if(row == n){
+            res.push_back(checkerboard);//如果没有满足条件的回直接返回初始
+            return;
+        }
+        for(int i = 0;i<n;i++){
+            if(isSet(n,row,i,checkerboard)){
+                checkerboard[row][i] = 'Q';
+                dfs(n,row+1,checkerboard);
+                checkerboard[row][i] = '.';
+            }
+        }
+    } 
+    vector<vector<string>> solveNQueens(int n) {
+        vector<string> checkerboard(n,string(n,'.'));//初始化
+        dfs(n,0,checkerboard);
         return res;
     }
 };
