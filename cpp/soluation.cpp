@@ -394,3 +394,28 @@ class Nqueen
         return res;
     }
 };
+//贪心算法解决跳跃问题
+class Solution9 {
+public:
+    int jump(vector<int>& nums) {
+        int maxstep = 0;//记录当前能走到的最远距离
+        int step = 0;//记录所走的步数
+        int end =0;//记录上一次能走到的最远距离
+        if(nums.size()==1){
+            return 0;
+        }
+        for(int i=0;i<nums.size();i++){
+            maxstep = max(maxstep,i+nums[i]);//每次更新最远距离，因为直接跳到最远的不一定是最远的
+            //中间有的可能回跳的更远
+            if(maxstep>=nums.size()-1){
+                return step+1;
+            }
+                
+            if(end == i){//当前的i遍历到上次能跳到的最远位置
+                end = maxstep;
+                step++;
+            }
+        }
+        return step;
+    }
+};
