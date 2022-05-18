@@ -64,12 +64,34 @@ public:
         return false;
     }
 };
-
+class Solution2 {
+public:
+    void canPartition(vector<int>& nums) {
+        int sum = 0;
+        for(int i:nums){
+            sum+=i;
+        }
+        if(sum%2==1){
+            return ;
+        }
+        int target = sum/2;
+        vector<int>dp(target+1);
+        for(int i=0;i<nums.size();i++){
+            for(int j=target;j>=nums[i];j--){
+                dp[j] = max(dp[j],dp[j-nums[i]]+nums[i]);
+            }
+            for(int k =0;k<=target;k++){
+                cout << dp[k] << " ";
+            }
+            cout << endl;
+        }
+        
+    }
+};
 int main()
 {
-    Solution test;
-    string s1 = {"mississippi"};
-    string s2 = {"issip"};
-    int n = test.strStr(s1, s2);
-    cout << n;
+    Solution2 s;
+    vector<int> nums = {1,5,11,5};
+    s.canPartition(nums);
+    return 0;
 }

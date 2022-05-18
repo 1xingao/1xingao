@@ -17,7 +17,7 @@ public:
             }
         }
         int startrow = (row/3)*3;
-        int startcol = (col/3)*3;//抄来的，真是巧妙
+        int startcol = (col/3)*3;
         for(int i=startrow;i<startrow+3;i++){
             for(int j = startcol;j<startcol+3;j++){
                 if(c == board[i][j]){
