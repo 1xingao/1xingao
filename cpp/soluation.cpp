@@ -444,7 +444,8 @@ public:
 //     }
 // }
 //01背包问题
-void test_2_wei_bag_problem1() {
+void test_2_wei_bag_problem1() 
+{
     vector<int> weight = {1, 3, 4};
     vector<int> value = {15, 20, 30};
     int bagweight = 4;
@@ -469,3 +470,20 @@ void test_2_wei_bag_problem1() {
     cout << dp[weight.size() - 1][bagweight] << endl;
 }
 
+//如果求组合数就是外层for循环遍历物品，内层for遍历背包。
+
+//如果求排列数就是外层for遍历背包，内层for循环遍历物品。
+void test_o1bage()
+{
+    vector<int> weight = {1, 3, 4};
+    vector<int> value = {15, 20, 30};  
+
+    int bagweight = 4;
+    vector<int> dp(bagweight+1,0);
+    //滚动数组解决01背包问题
+    for(int i=0;i<weight.size();i++){
+        for(int j=bagweight;j>=weight[i];j--){
+            dp[j] = max(dp[j],dp[j-weight[i]]+value[i]);
+        }
+    }
+}

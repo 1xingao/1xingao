@@ -3,12 +3,13 @@ cps=bilibili
 channel=14
 sub_channel=0
 game_install_path=D:/Genshin Impact/Genshin Impact Game
-game_dynamic_bg_name=7a0e3aa7c296b1562549b8bde366ae87_2682713341520311671.png
-game_dynamic_bg_md5=9b49182ecb99ed57b4a740549e466c5d
+game_dynamic_bg_name=e426623d5564fc64465f07a1e519b592_3458490453880168358.png
+game_dynamic_bg_md5=e19f7de02db07fc231f804c0c32ae292
 game_start_name=YuanShen.exe
 is_first_exit=false
 exit_type=2
 speed_limit_enabled=false
+
 """
 bili_ini_short = """[General]
 channel=14
@@ -24,7 +25,7 @@ channel=1
 sub_channel=1
 game_install_path=D:/Genshin Impact/Genshin Impact Game
 game_dynamic_bg_name=7a0e3aa7c296b1562549b8bde366ae87_2682713341520311671.png
-game_dynamic_bg_md5=9b49182ecb99ed57b4a740549e466c5d
+game_dynamic_bg_md5=e19f7de02db07fc231f804c0c32ae292
 game_start_name=YuanShen.exe
 is_first_exit=false
 exit_type=2
