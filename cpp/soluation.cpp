@@ -645,7 +645,7 @@ public:
         }
         return dp4[prices.size() - 1];
     }
-//滚动数组优化版本，当一个数改成一维数组就是股票四的问题
+    //滚动数组优化版本，当一个数改成一维数组就是股票四的问题
     int maxProfit_1(vector<int> &prices)
     {
         int dp1, dp2, dp3, dp4;
@@ -659,5 +659,75 @@ public:
             dp4 = max(dp4, dp3 + price);
         }
         return dp4;
+    }
+};
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+class Solution12
+{
+public:
+    void reorderList(ListNode *head)
+    {
+        // vector<ListNode*> temp;
+        // ListNode* tem = head;
+        // while(tem!=nullptr){
+        //     temp.emplace_back(tem);
+        //     tem = tem->next;
+        // }
+
+        // int left = 0,right = temp.size()-1;
+        // while(left<right){
+        //     temp[left]->next = temp[right];
+        //     temp[right--]->next = temp[++left];
+        // }
+        //快慢指针寻找链表中点
+        ListNode *fast = head;
+        ListNode *slow = head;
+        while (fast->next != nullptr && fast->next->next != nullptr)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        ListNode *pre = nullptr;
+        ListNode *curr = slow->next;
+        slow->next = nullptr; //断开链表
+        //反转链表
+        while (curr != nullptr)
+        {
+            ListNode *temp = curr->next;
+            curr->next = pre;
+            pre = curr;
+            curr = temp;
+        }
+        //合并链表
+        ListNode *tem = head;
+        while (pre != nullptr && tem != nullptr)
+        {
+            ListNode *re_temp = pre->next;
+            ListNode *head_temp = tem->next;
+            tem->next = pre;
+            pre->next = head_temp;
+            tem = head_temp;
+            pre = re_temp;
+        }
     }
 };
