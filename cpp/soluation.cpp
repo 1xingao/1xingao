@@ -27,7 +27,7 @@ public:
     }
 };
 //以普通函数的方式实现自定义排序规则
-bool mycomp(int i, int j)
+static bool mycomp(int i, int j)
 {
     return (i < j);
 }
@@ -183,7 +183,7 @@ public:
         }
         while (i <= mid)
         {
-            tmp[k++] = nums[i++];
+            tmp[k++] = nums[i++]
         }
         while (j <= end)
         {
@@ -729,5 +729,6 @@ public:
             tem = head_temp;
             pre = re_temp;
         }
+        
     }
 };

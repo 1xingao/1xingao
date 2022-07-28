@@ -57,7 +57,7 @@
 
     > 大内核包括时钟管理、中断处理、原语（设备驱动、cpu切换）|  微内核不包括进程管理、存储器管理、设备管理
 
-![1.1_4](../assist/1.1_4.png)
+![1.1_4](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/1.1_4.png)
 
 ### 中断和异常
 
@@ -82,7 +82,7 @@
     1. 根据中断信号转入相应的中断处理程序
     1. 回退源程序的cpu环境退出中断，源程序继续执行
 
-![1.5](../assist/1.5.png)
+![1.5](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/1.5.png)
 
 ### 系统调用
 
@@ -105,7 +105,7 @@
 
 1. 系统调用会使处理去从用户态进入核心态
 
-![1.1_6](../assist/1.1_6.png)
+![1.1_6](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/1.1_6.png)
 
 ---
 
@@ -170,7 +170,7 @@
 
 >进程是资源分配，接受调度的基本单位
 
-![2.1_1](../assist/2.1_1.png)
+![2.1_1](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/2.1_1.png)
 
 ### 进程的状态
 
@@ -186,15 +186,15 @@
 
 ### 进程属性
 
-![shuxing](../assist/shuxing.jpg)
+![shuxing](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/shuxing.jpg)
 
 ### 进程通信
 
-![tongxin](../assist/tongxin.jpg)
+![tongxin](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/tongxin.jpg)
 
 ### 多线程模型
 
-![duoxiancheng](../assist/duoxiancheng.jpg)
+![duoxiancheng](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/duoxiancheng.jpg)
 
 ### 进程控制
 
@@ -206,7 +206,7 @@
     - 关中断指令
     - 开中断指令
 
-![2.1_2](../assist/2.1_2.png)
+![2.1_2](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/2.1_2.png)
 
 ### 处理机调度
 
@@ -221,9 +221,9 @@
 
 - 挂起状态
 
-![2.2](../assist/1.2_4.png)
+![2.2](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/1.2_4.png)
 
-![2.2_1](../assist/2.2_1.png)
+![2.2_1](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/2.2_1.png)
 
 ### 进程调度
 
@@ -241,7 +241,7 @@
 
     1. 回复新进程的数据
 
-![2.1_3](/assist/2.1_3.png)
+![2.1_3](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/2.1_3.png)
 
 ### 调度算法的评价指标
 
@@ -307,7 +307,7 @@
 
     ***以上算法适用于批处理系统***
 
-    ![2.2_4](../assist/2.2_4.png)
+    ![2.2_4](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/2.2_4.png)
 
 1. 时间片轮转调度算法（RR）
 
@@ -385,7 +385,7 @@
 
     - 可能会导致饥饿
 
-![2.2_5](/assist/2.2_5.png)
+![2.2_5](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/2.2_5.png)
 
 ***适用于交互式系统***
 
@@ -421,13 +421,13 @@
 
         - 让权等待，当进程不能进入临界区，应该放弃处理机。防止进程忙等待
 
-![2.2_6](../assist/2.2_6.png)
+![2.2_6](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/2.2_6.png)
 
 ### 进程互斥的实现方法
 
-![ruanjian](../assist/jinchengruanjian.jpg)
+![ruanjian](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/jinchengruanjian.jpg)
 
-![yingjian](../assist/jinchengyingjian.jpg)
+![yingjian](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/jinchengyingjian.jpg)
 
 ### 信号量机制
 
@@ -485,7 +485,7 @@
 
 1. wakeup原语，释放资源后若还有其他进程等待资源，则会使用wakeup唤醒等待队列的一个进程，从阻塞到就绪队列
 
-![2.3_4](../assist/2.3_4.png)
+![2.3_4](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/2.3_4.png)
 
 ### 信号量机制实现进程互斥
 
@@ -513,7 +513,7 @@
 
 ### 信号量机制实现前驱关系
 
-![2.3_5](../assist/2.3_5.png)
+![2.3_5](https://cdn.jsdelivr.net/gh/1xingao/picgo@main/img/2.3_5.png)
 
 >实现互斥在实现同步之后，不然会导致死锁
 >临界资源等于一的时候可以不设置互斥信号量

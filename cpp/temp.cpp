@@ -1,3 +1,5 @@
+#include<bits/stdc++.h>
+using namespace std;
 class Solution {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
@@ -26,3 +28,10 @@ public:
         return res;
     }
 };
+int main()
+{
+    int c ;
+    cin >> c;
+    cout << c;
+    return 0;
+}
