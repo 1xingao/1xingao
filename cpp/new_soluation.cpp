@@ -153,11 +153,7 @@ public:
         return battle(pref, suff);
     }
 };
-int main()
-{
-    
-    return 0;
-}
+
 /*
 不用看官方题解，那么复杂。 所有树的题目，都想成一颗只有根、左节点、右节点 的小树。然后一颗颗小树构成整棵大树，
 所以只需要考虑这颗小树即可。接下来分情况， 按照题意：一颗三个节点的小树的结果只可能有如下6种情况：
@@ -196,7 +192,8 @@ public:
     }
 };
 /**
- * 路径 被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。同一个节点在一条路径序列中 至多出现一次 。该路径 至少包含一个 节点，且不一定经过根节点。
+ * 路径 被定义为一条从树中任意节点出发，沿父节点-子节点连接，达到任意节点的序列。同一个
+ * 节点在一条路径序列中 至多出现一次 。该路径 至少包含一个 节点，且不一定经过根节点。
 
 路径和 是路径中各节点值的总和。
 
@@ -243,11 +240,52 @@ public:
         return res;
     }
 };
-int main()
-{
-    int my_test = 20;
-    Solution s1;
-    queue<int> que;
-    int n = que.back();
-    return 0;
+
+
+//构造二维数组可以使用string状态压缩
+//leetcode6，z字形变换
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        if(numRows == 1){
+            return s;
+        }
+        vector<string> res(numRows);
+        int flag = 1;
+        int row = 0;
+        for(int i=0;i<s.size();i++){
+            res[row]+=s[i];
+            row+=flag;
+            if(row == numRows-1||row ==0){
+                flag = -flag;
+            }
+        }
+        string ret;
+        for(string re:res){
+            ret+=re;
+        }
+        return ret;
+    }
+};
+
+//split函数，仅适用于string
+const std::vector<std::string> split(const std::string& str, const std::string& pattern) {
+    std::vector<std::string> result;
+    std::string::size_type begin, end;
+
+    end = str.find(pattern);
+    begin = 0;
+
+    while (end != std::string::npos) {
+        if (end - begin != 0) {
+            result.push_back(str.substr(begin, end-begin)); 
+        }    
+        begin = end + pattern.size();
+        end = str.find(pattern, begin);
+    }
+
+    if (begin != str.length()) {
+        result.push_back(str.substr(begin));
+    }
+    return result;        
 }

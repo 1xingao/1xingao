@@ -183,7 +183,7 @@ public:
         }
         while (i <= mid)
         {
-            tmp[k++] = nums[i++]
+            tmp[k++] = nums[i++];
         }
         while (j <= end)
         {
