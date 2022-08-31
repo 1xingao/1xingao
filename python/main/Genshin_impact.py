@@ -12,16 +12,22 @@ game_dir = "D:\\Genshin Impact\\Genshin Impact Game\\YuanShen_Data\\Plugins\\"
 
 def change_file(chenel :int,cps:str,subs:int,path:str) -> None:
     changed_file = []
+
     with open(path,"r") as file:
         for line in file.readlines():
+
             if "cps=" in line:
                 line = "cps=" + str(cps)+"\n"
             
             if "sub_channel=" in line:
                 line = "sub_channel=" +str(subs)+"\n"
+
             elif "channel=" in  line:
                 line = "channel="+str(chenel)+"\n"
+                
             changed_file.append(line)
+
+
     with open(path,"w") as f:
         for i in changed_file:
             f.writelines(i)

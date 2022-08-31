@@ -23,9 +23,7 @@ class Trie
 public:
     bool end; //是否为结尾
     vector<Trie *> children;
-    Trie() : children(26), end(false)
-    {
-    }
+    Trie() : children(26), end(false){}
 
     void insert(string word)
     {
@@ -138,6 +136,8 @@ public:
         }
         return -1;
     }
+    /// @brief 
+    /// @param words 
     WordFilter(vector<string> &words)
     {
         int s = words.size();
@@ -147,7 +147,7 @@ public:
             insert(t2, words[i], i, true);
         }
     }
-
+    
     int f(string pref, string suff)
     {
         return battle(pref, suff);
@@ -170,7 +170,7 @@ public:
  最后把两类情况得到的最大值再取一个最大值即可。
  */
 
-class Solution
+class Solution3
 {
 public:
     int res = INT_MIN;
@@ -205,7 +205,7 @@ public:
 
 //单调队列解决滑动窗口最大值
 //单调队列使用的是双端队列
-class Solution
+class Solution2
 {
 public:
     vector<int> maxSlidingWindow(vector<int> &nums, int k)
@@ -244,7 +244,8 @@ public:
 
 //构造二维数组可以使用string状态压缩
 //leetcode6，z字形变换
-class Solution {
+class Solution1
+{
 public:
     string convert(string s, int numRows) {
         if(numRows == 1){
@@ -269,7 +270,8 @@ public:
 };
 
 //split函数，仅适用于string
-const std::vector<std::string> split(const std::string& str, const std::string& pattern) {
+const std::vector<std::string> split(const std::string& str, const std::string& pattern)
+{
     std::vector<std::string> result;
     std::string::size_type begin, end;
 
@@ -287,5 +289,15 @@ const std::vector<std::string> split(const std::string& str, const std::string& 
     if (begin != str.length()) {
         result.push_back(str.substr(begin));
     }
-    return result;        
+    return result;
+}
+
+int main()
+{
+    string test = "i am a good!";
+    auto res = split(test," ");
+    for(string s:res){
+        cout<<s<<endl;
+    }
+    return 0;
 }
