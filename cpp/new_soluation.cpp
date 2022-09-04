@@ -1,3 +1,12 @@
+/*
+ * @Author: xinao_seven_
+ * @Date: 2022-07-14 11:26:46
+ * @LastEditTime: 2022-09-04 20:08:26
+ * @LastEditors: xinao_seven_
+ * @Description:
+ * @FilePath: \1xingao\cpp\new_soluation.cpp
+ *
+ */
 #include <bits/stdc++.h>
 using namespace std;
 struct ListNode
@@ -23,7 +32,7 @@ class Trie
 public:
     bool end; //是否为结尾
     vector<Trie *> children;
-    Trie() : children(26), end(false){}
+    Trie() : children(26), end(false) {}
 
     void insert(string word)
     {
@@ -136,8 +145,8 @@ public:
         }
         return -1;
     }
-    /// @brief 
-    /// @param words 
+    /// @brief
+    /// @param words
     WordFilter(vector<string> &words)
     {
         int s = words.size();
@@ -147,7 +156,7 @@ public:
             insert(t2, words[i], i, true);
         }
     }
-    
+
     int f(string pref, string suff)
     {
         return battle(pref, suff);
@@ -241,36 +250,40 @@ public:
     }
 };
 
-
 //构造二维数组可以使用string状态压缩
-//leetcode6，z字形变换
+// leetcode6，z字形变换
 class Solution1
 {
 public:
-    string convert(string s, int numRows) {
-        if(numRows == 1){
+    string convert(string s, int numRows)
+    {
+        if (numRows == 1)
+        {
             return s;
         }
         vector<string> res(numRows);
         int flag = 1;
         int row = 0;
-        for(int i=0;i<s.size();i++){
-            res[row]+=s[i];
-            row+=flag;
-            if(row == numRows-1||row ==0){
+        for (int i = 0; i < s.size(); i++)
+        {
+            res[row] += s[i];
+            row += flag;
+            if (row == numRows - 1 || row == 0)
+            {
                 flag = -flag;
             }
         }
         string ret;
-        for(string re:res){
-            ret+=re;
+        for (string re : res)
+        {
+            ret += re;
         }
         return ret;
     }
 };
 
-//split函数，仅适用于string
-const std::vector<std::string> split(const std::string& str, const std::string& pattern)
+// split函数，仅适用于string
+const std::vector<std::string> split(const std::string &str, const std::string &pattern)
 {
     std::vector<std::string> result;
     std::string::size_type begin, end;
@@ -278,15 +291,18 @@ const std::vector<std::string> split(const std::string& str, const std::string& 
     end = str.find(pattern);
     begin = 0;
 
-    while (end != std::string::npos) {
-        if (end - begin != 0) {
-            result.push_back(str.substr(begin, end-begin)); 
-        }    
+    while (end != std::string::npos)
+    {
+        if (end - begin != 0)
+        {
+            result.push_back(str.substr(begin, end - begin));
+        }
         begin = end + pattern.size();
         end = str.find(pattern, begin);
     }
 
-    if (begin != str.length()) {
+    if (begin != str.length())
+    {
         result.push_back(str.substr(begin));
     }
     return result;
@@ -295,9 +311,168 @@ const std::vector<std::string> split(const std::string& str, const std::string& 
 int main()
 {
     string test = "i am a good!";
-    auto res = split(test," ");
-    for(string s:res){
-        cout<<s<<endl;
+    auto res = split(test, " ");
+    for (string s : res)
+    {
+        cout << s << endl;
     }
     return 0;
 }
+
+class Solution_for_bfs
+{
+public:
+    //二维矩阵的bfs
+    int shortestPathBinaryMatrix(vector<vector<int>> &grid)
+    {
+        int n = grid.size();
+        int m = grid[0].size();
+
+        if (grid[0][0] != 0)
+            return -1;
+        if (grid[n - 1][m - 1] == 1)
+            return -1;
+        if (n == 1)
+            return 1;
+
+        int dir[8][8] = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, 0}, {1, -1}, {1, 1}};
+        queue<pair<int, int>> que;
+        que.push({0, 0});
+        int res = 1;
+        grid[0][0] = 1;
+        while (!que.empty())
+        {
+            int len = que.size();
+            for (int i = 0; i < len; i++)
+            {
+                int x = que.front().first;
+                int y = que.front().second;
+                que.pop();
+                for (int j = 0; j < 8; j++)
+                {
+                    int xx = x + dir[j][0];
+                    int yy = y + dir[j][1];
+
+                    if (xx >= 0 && xx < n && yy >= 0 && yy < m)
+                    {
+                        if (grid[xx][yy] == 0)
+                        {
+                            que.push({xx, yy});
+                            grid[xx][yy] = 1;
+                        }
+                    }
+                    if (xx == n - 1 && yy == m - 1)
+                    {
+                        return res + 1;
+                    }
+                }
+            }
+            res++;
+        }
+        return -1;
+    }
+    //二维矩阵的dfs
+    void dfs(vector<vector<char>> &grid, int row, int col)
+
+    {
+        if (row < 0 || row >= grid.size() || col < 0 || col >= grid[0].size() ||
+            grid[row][col] != '1')
+        { //这里必须判断标记值不然会无限递归
+            return;
+        }
+        grid[row][col] = '2';
+        dfs(grid, row + 1, col);
+        dfs(grid, row - 1, col);
+        dfs(grid, row, col + 1);
+        dfs(grid, row, col - 1);
+    }
+
+    int numIslands(vector<vector<char>> &grid)
+    {
+        int res = 0;
+        for (int i = 0; i < grid.size(); i++)
+        {
+            for (int j = 0; j < grid[0].size(); j++)
+            {
+                if (grid[i][j] == '1')
+                {
+                    dfs(grid, i, j);
+                    res++;
+                }
+            }
+        }
+        return res;
+    }
+};
+
+//寻找二叉树路径包含Y字型
+
+class Solution_for_tree
+{
+public:
+    int res = 0;
+    int longestUnivaluePath(TreeNode *root)
+    {
+
+        dfs(root);
+        return res;
+    }
+    int dfs(TreeNode *root)
+    {
+        if (!root)
+        {
+            return 0;
+        }
+        int left = dfs(root->left);
+        int right = dfs(root->right);
+
+        if (root->left && root->val == root->left->val)
+        {
+            left++;
+        }
+        else
+        {
+            left = 0;
+        }
+        if (root->right && root->val == root->right->val)
+        {
+            right++;
+        }
+        else
+        {
+            right = 0;
+        }
+        res = max(res, right + left);
+        return max(right, left);
+    }
+};
+
+class decimalConversion
+{
+public:
+    //十进制转化为任意进制
+    
+    /**
+     * @description: 
+     * @param {int} digital
+     * @param {int} r
+     * @return {*}
+     */
+    std::string dtox(int digital, int r)
+    {
+        string result = "";
+        const char s[37] = "0123456789abcdefghijklmnopqrstuvwxyz";
+        if (digital == 0)
+        {
+            return "0";
+        }
+        while (digital != 0)
+        {
+            int tmp = digital % r;
+            result += s[tmp];
+            digital /= r;
+        }
+        reverse(result.begin(), result.end());
+        return result;
+    }
+};

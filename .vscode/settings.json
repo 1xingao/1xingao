@@ -53,5 +53,23 @@
         "valarray": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled",
-    "python.formatting.provider": "yapf"
+    "python.formatting.provider": "yapf",
+    // 头部注释
+    "fileheader.customMade": {
+        // 头部注释默认字段
+        "Author": "xinao_seven_",
+        "Date": "Do not edit", // 设置后默认设置文件生成时间
+        "LastEditTime": "Do not edit", // 设置后，保存文件更改默认更新最后编辑时间
+        "LastEditors": "xinao_seven_", // 设置后，保存文件更改默认更新最后编辑人
+        "Description": "",
+        "FilePath": "Do not edit", // 设置后，默认生成文件相对于项目的路径
+        "custom_string_obkoro1": ""
+    },
+    // 函数注释
+    "fileheader.cursorMode": {
+        "description": "", // 函数注释生成之后，光标移动到这里
+        "param": "", // param 开启函数参数自动提取 需要将光标放在函数行或者函数上方的空白行
+        "return": "",
+    },
+    "editor.stickyScroll.enabled": true
 }

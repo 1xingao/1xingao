@@ -48,8 +48,9 @@ if __name__ == "__main__":
             change_file(1,"mihoyo",1,first_path)
             change_file(1,"mihoyo",1,second_path)
 
-    except IOError:
+    except IOError as e:
         print ("Error: 没有找到文件或读取文件失败")
+        print("错误信息：" + e)
     else:
         print ("内容写入文件成功")
     
