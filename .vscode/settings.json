@@ -99,7 +99,7 @@
         "LastEditTime": "Do not edit", // 设置后，保存文件更改默认更新最后编辑时间
         "LastEditors": "xinao_seven_", // 设置后，保存文件更改默认更新最后编辑人
         "Description": "",
-        "Encoding method":"utf8",
+        "Encoding":"utf8",
         "FilePath": "Do not edit", // 设置后，默认生成文件相对于项目的路径
         "custom_string_obkoro1": ""
     },

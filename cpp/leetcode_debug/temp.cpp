@@ -1,3 +1,14 @@
+/*
+ * @Author: xinao_seven_
+ * @Date: 2022-07-13 18:47:23
+ * @LastEditTime: 2022-09-06 20:31:47
+ * @LastEditors: xinao_seven_
+ * @Description: 
+ * @Encoding method: utf8
+ * @FilePath: \1xingao\cpp\leetcode_debug\temp.cpp
+ * 
+ */
+
 #include<bits/stdc++.h>
 using namespace std;
 class Solution {

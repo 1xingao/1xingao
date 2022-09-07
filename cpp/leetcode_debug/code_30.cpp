@@ -1,11 +1,11 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-09-05 22:49:43
- * @LastEditTime: 2022-09-06 08:26:24
+ * @LastEditTime: 2022-09-06 20:37:38
  * @LastEditors: xinao_seven_
  * @Description: 
  * @Encoding method: utf8
- * @FilePath: \1xingao\cpp\code_30.cpp
+ * @FilePath: \1xingao\cpp\leetcode_debug\code_30.cpp
  * 
  */
 
