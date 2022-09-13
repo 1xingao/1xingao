@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-09-07 12:35:58
- * @LastEditTime: 2022-09-07 12:37:01
+ * @LastEditTime: 2022-09-07 16:45:58
  * @LastEditors: xinao_seven_
  * @Description: 
  * @Encoding method: utf8
@@ -9,11 +9,15 @@
  * 
  */
 #include<bits/stdc++.h>
+#include "myFunc.h"
 using namespace std;
+string_Fun myfun;
+
 class Solution {
 public:
     string reorderSpaces(string text) {
-        vector<string> res = split(text," ");
+        
+        vector<string> res = myfun.split(text," ");
         int space = 0;
         for(char c:text){
             if(c==' '){
@@ -38,30 +42,7 @@ public:
         }
         return ret;
     }
-    const std::vector<std::string> split(const std::string &str, const std::string &pattern)
-{
-    std::vector<std::string> result;
-    std::string::size_type begin, end;
-
-    end = str.find(pattern);
-    begin = 0;
-
-    while (end != std::string::npos)
-    {
-        if (end - begin != 0)
-        {
-            result.push_back(str.substr(begin, end - begin));
-        }
-        begin = end + pattern.size();
-        end = str.find(pattern, begin);
-    }
-
-    if (begin != str.length())
-    {
-        result.push_back(str.substr(begin));
-    }
-    return result;
-}
+    
 };
 int main()
 {

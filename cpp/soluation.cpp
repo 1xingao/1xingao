@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 //自定义sort排序方式
 using namespace std;
+
 class Solution1
 {
 public:
@@ -73,6 +74,13 @@ void qsort(vector<int> &nums, int begin, int end)
         qsort(nums, begin, i - 1);
         qsort(nums, i + 1, end);
     }
+}
+
+void sorttem()
+{
+    vector<int> nums{1,3,45,3,2,4,5};
+    sort(nums.begin(),nums.end(),less<int>());//升序 
+    sort(nums.begin(),nums.end(),greater<int>());//降序
 }
 //二叉树的通用删除节点的方法
 class Solution9

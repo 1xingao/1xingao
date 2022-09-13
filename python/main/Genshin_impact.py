@@ -1,3 +1,16 @@
+'''
+Author: xinao_seven_
+Date: 2022-08-12 21:29:58
+LastEditTime: 2022-09-10 19:28:27
+LastEditors: xinao_seven_
+Description: 
+Encoding: utf8
+FilePath: \\1xingao\\python\\main\\Genshin_impact.py
+
+'''
+
+
+
 import shutil
 
 first_path = "D:\\Genshin Impact\\Genshin Impact Game\\config.ini"

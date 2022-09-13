@@ -1,3 +1,14 @@
+/*
+ * @editor: xinao_seven_
+ * @Date: 2021-10-14 22:17:27
+ * @LastEditors: xinao_seven_
+ * @LastEditTime: 2022-09-10 19:13:34
+ * @FilePath: \1xingao\cpp\class.cpp
+ * @Author: xinao_seven_
+ * @Description: 
+ * @Encoding: utf8
+ * 
+ */
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
