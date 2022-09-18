@@ -1,10 +1,10 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-07-14 11:26:46
- * @LastEditTime: 2022-09-04 20:08:26
+ * @LastEditTime: 2022-09-18 13:26:46
  * @LastEditors: xinao_seven_
  * @Description:
- * @FilePath: \1xingao\cpp\new_soluation.cpp
+ * @FilePath: \\1xingao\\cpp\\new_soluation.cpp
  *
  */
 #include <bits/stdc++.h>
@@ -26,6 +26,9 @@ struct TreeNode
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
+
+
+
 //前缀树/字典树的实现
 class Trie
 {
@@ -74,6 +77,32 @@ public:
             temp = temp->children[c - 'a'];
         }
         return true;
+    }
+    bool startwithdot(string word)
+    {
+        return dfs(this,word,0);
+    }
+    /// @brief 匹配含有占位符的单词如.bac/ab.c
+    /// @param root 
+    /// @param word 
+    /// @param index 
+    /// @return 是否存在这个单词(含占位符)
+    bool dfs(Trie* root,string word,int index)
+    {
+        if(index >= word.size()){
+            return root->end;
+        }
+        char c = word[index];
+        if(c != '.'){
+            if(root->children[c-'a'] != nullptr){
+                return dfs(root->children[c-'a'],word,index+1);
+            }else{return false;}
+        }
+        for(Trie* temp:root->children){
+            if(temp!=nullptr&&dfs(temp,word,index+1)){return true;}
+
+        }
+        return false;
     }
 };
 
@@ -476,3 +505,26 @@ public:
         return result;
     }
 };
+
+void stl_func()
+{
+    vector<int> nums{1,2,3,4,5,6};
+    int res = accumulate(nums.begin(),nums.end(),0);//计算元素和
+
+}
+
+//获取数组里面的最大值和他后边的次大值
+bool increasingTriplet(vector<int>& nums) {
+        int a = INT_MAX;
+        int b = INT_MAX;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i] <= a){
+                a = nums[i];
+            }else if(nums[i] <= b){
+                b = nums[i];
+            }else{
+                return true;
+            }
+        }
+        return false;
+    }

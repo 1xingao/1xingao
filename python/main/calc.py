@@ -30,7 +30,7 @@ def zuoBiao(x:Double,y:Double,s,alpha):
 #坐标反算
 def fanBiao(x:Double,y:Double,x2,y2):
     s = math.sqrt((x-x2)**2+(y-y2)**2)
-    alpha = math.atan2(y-y2,x-x2)
+    alpha = math.math.atan2(y-y2,x-x2)
     if alpha<0:
         return alpha+2*math.pi
     return s,alpha

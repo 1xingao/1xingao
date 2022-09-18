@@ -19,7 +19,7 @@ s_list = [67.609,58.217,43.933,30.849,27.825,40.045,43.603,43.219,70.626,45.431]
 # x = 92362.8
 # y = 50227.313
 # res_list = []
-direction = math.atan((50227.313-50196.672)/(92362.8-92359.397))    #计算方向
+direction = math.math.atan((50227.313-50196.672)/(92362.8-92359.397))    #计算方向
 direction = math.degrees(direction)#转化为角度
 # print(direction)
 # for a,b,c,s in zip(a_list,b_list,c_list,s_list):

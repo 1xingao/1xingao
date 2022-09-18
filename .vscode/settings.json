@@ -101,7 +101,7 @@
         "Description": "",
         "Encoding":"utf8",
         "FilePath": "Do not edit", // 设置后，默认生成文件相对于项目的路径
-        "custom_string_obkoro1": ""
+        
     },
     // 函数注释
     "fileheader.cursorMode": {
