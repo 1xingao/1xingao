@@ -1,7 +1,7 @@
 '''
 Author: xinao_seven_
 Date: 2022-09-18 13:46:50
-LastEditTime: 2022-09-19 11:12:58
+LastEditTime: 2022-09-19 11:23:22
 LastEditors: xinao_seven_
 Description: 
 Encoding: utf8
@@ -14,6 +14,10 @@ from typing import *
 import numpy as np
 import math
 
+
+Vector = np.array(list[float])
+
+
 # print(NewCoordinates)
 class Two_dimensional:
     def __init__(self) -> None:
@@ -24,7 +28,7 @@ class Two_dimensional:
                                         [-37802.0351, 24804.2516]])
 
     # 坐标参数解算
-    def GetParameters(self) -> Any:
+    def GetParameters(self) -> Vector:
         L = []
         B = np.empty((0, 4))
         for i in range(self.OldCoordinates.shape[0]):
@@ -59,7 +63,7 @@ class Two_dimensional:
 
     # GetParameters()
 
-    def GetNewCoordinates(self, x: float, y: float) -> Any:
+    def GetNewCoordinates(self, x: float, y: float) -> Vector:
         # 解算参数
         res = self.GetParameters()
         
@@ -81,7 +85,7 @@ class Three_dimensional:
         self.OldCoordinates = np.array([[]])
         self.NewCoordinates = np.array([[]])
 
-    def GetParameters(self):
+    def GetParameters(self) -> Vector:
         L = []
         B = np.empty((0, 7))
         for i in range(self.OldCoordinates.shape[0]):
@@ -110,7 +114,7 @@ class Three_dimensional:
 
         return x
 
-    def GetNewCoordinates(self, x: Double, y: Double, z: Double):
+    def GetNewCoordinates(self, x: float, y: float, z: float) -> Vector:
         # 解算参数
         res = self.GetParameters()
         TemporaryMatrix = np.array([[1, 0, 0, 0, -z, y, x], [0, 1, 0, z, 0, -x, y], [0, 0, 1, -y, x, 0, z]])
@@ -123,7 +127,7 @@ class Three_dimensional:
         return ans
 
 
-if __name__ == "__main__":
+def main() -> None:
     calc = Two_dimensional()
     firstcoor = calc.GetNewCoordinates(2860046.5165, 524597.2659).T
     secondcoor = calc.GetNewCoordinates(2865890.2564, 519087.7625).T
@@ -131,5 +135,9 @@ if __name__ == "__main__":
     res = np.vstack((firstcoor, secondcoor))
     print(res)
     
+
+
+if __name__ == "__main__":
+    main()
 
 
