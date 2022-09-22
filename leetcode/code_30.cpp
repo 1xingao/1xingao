@@ -1,11 +1,11 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-09-05 22:49:43
- * @LastEditTime: 2022-09-06 20:37:38
+ * @LastEditTime: 2022-09-21 19:37:08
  * @LastEditors: xinao_seven_
  * @Description: 
  * @Encoding method: utf8
- * @FilePath: \1xingao\cpp\leetcode_debug\code_30.cpp
+ * @FilePath: \\1xingao\\cpp\\leetcode_debug\\code_30.cpp
  * 
  */
 
@@ -50,11 +50,8 @@ vector<int> findSubstring(string s, vector<string> &words)
     }
     return res;
 }
+
 int main(){ 
-    vector<string> list{"word","good","best","good"};
-    auto res = findSubstring("wordgoodgoodgoodbestword",list);
-    for(int i:res){
-        cout<< i;
-    }
+    
     return 0;
 }
