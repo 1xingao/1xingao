@@ -1,16 +1,15 @@
 '''
 Author: xinao_seven_
 Date: 2022-09-18 13:46:50
-LastEditTime: 2022-09-22 12:20:00
+LastEditTime: 2022-09-22 22:20:24
 LastEditors: xinao_seven_
-Description: 
+Description: 二维四参数坐标转换和三维七参数坐标转换
 Encoding: utf8
 FilePath: \\1xingao\\python\\numpy\\ans.py
 
 '''
 
 import math
-
 import xlrd
 import numpy as np
 from typing import *
@@ -25,7 +24,6 @@ class Two_dimensional:
         self.OldCoordinates = old
         self.NewCoordinates = new
         self.V = np.empty((0, 1))
-        
 
     # 坐标参数解算
     def GetParameters(self) -> np.ndarray:
@@ -56,7 +54,7 @@ class Two_dimensional:
         v = np.dot(B, x) - L
         # print(v.shape)
         self.V = np.append(self.V, v, axis=0)
-        
+
         # m = math.sqrt(a**2+b**2)-1
         # alpha = math.atan(b/a)
         # print(m,math.degrees(alpha))
@@ -81,6 +79,8 @@ class Two_dimensional:
         # print(ans)
         return ans
 
+    
+
 
 # 三维七参数坐标转换
 class Three_dimensional:
@@ -89,6 +89,7 @@ class Three_dimensional:
         self.NewCoordinates = new
         self.V = np.empty((0, 1))
         self.ParameterList = np.empty((7, 0))
+        self.NonCommonPoint = np.empty((11, 3))
 
     def GetParameters(self) -> np.ndarray:
         L = []
@@ -133,7 +134,29 @@ class Three_dimensional:
         # 实际计算公式
         ans = startmat + np.dot(TemporaryMatrix, res)
         # print(ans)
+
         return ans
+
+    def getdis(self, old: np.ndarray, new: np.ndarray) -> float:
+        res = .0
+        for i in range(3):
+            res += (old[i] - new[i])**2
+        return res
+
+    def Residual(self, yCorrectionNumber: np.ndarray,
+                 Coordinate: np.ndarray) -> np.ndarray:
+        v = self.V.reshape(6, 3)
+        res = np.empty((0, 3))
+        for i in range(len(Coordinate)):
+            sum = np.array([[.0, .0, .0]])
+            sumS = .0
+            for j in range(len(yCorrectionNumber)):
+                s2 = self.getdis(yCorrectionNumber[j], Coordinate[i])
+                sum = sum + v[j] / s2
+                sumS += 1 / s2
+            res = np.append(res, sum / sumS, axis=0)
+
+        return res
 
 
 def excel2matrix(path: str) -> np.ndarray:
@@ -150,11 +173,16 @@ def excel2matrix(path: str) -> np.ndarray:
 
 
 def threedTest() -> None:
-    old = excel2matrix("python\\numpy\\data\\old.xlsx")
+    old = excel2matrix("data\\old.xlsx")
     # print(old)
-    new = excel2matrix("python\\numpy\\data\\new.xlsx")
+    new = excel2matrix("data\\new.xlsx")
+    test = excel2matrix("data\\test.xlsx")
+    
     calcT = Three_dimensional(old, new)
+
     res = calcT.GetParameters()
+    Non_public = calcT.Residual(new, test)
+
     res[3:-1] *= 206265
     data = res.reshape(7, 1)
     data_list = map(lambda x: x[0], data)
@@ -162,8 +190,14 @@ def threedTest() -> None:
     ser = pd.Series(data_list, index=['x0', 'y0', 'z0', 'x', 'y', 'z', 'k'])
     print("参数列表：")
     print(ser)
+
     print("改正数：")
-    Correction = pd.DataFrame(calcT.V.reshape((6, 3)) * -1,
+    Correction = pd.DataFrame(Non_public,
+                              index=[
+                                  'k001', 'k002', 'k003', 'k004', 'k005',
+                                  'k006', 'm001', 'm002', 'm003', 'm004',
+                                  'm005'
+                              ],
                               columns=['x', 'y', 'z'])
     print(Correction)
 
@@ -201,7 +235,7 @@ def twodTest() -> None:
 
 
 def main() -> None:
-    print("-----------------------------------------")
+    
     print("二维坐标转换：")
     twodTest()
 
