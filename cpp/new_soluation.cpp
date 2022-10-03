@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-07-14 11:26:46
- * @LastEditTime: 2022-09-18 13:26:46
+ * @LastEditTime: 2022-10-03 17:01:36
  * @LastEditors: xinao_seven_
  * @Description:
  * @FilePath: \\1xingao\\cpp\\new_soluation.cpp
@@ -26,8 +26,6 @@ struct TreeNode
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
-
-
 
 //前缀树/字典树的实现
 class Trie
@@ -80,27 +78,37 @@ public:
     }
     bool startwithdot(string word)
     {
-        return dfs(this,word,0);
+        return dfs(this, word, 0);
     }
     /// @brief 匹配含有占位符的单词如.bac/ab.c
-    /// @param root 
-    /// @param word 
-    /// @param index 
+    /// @param root
+    /// @param word
+    /// @param index
     /// @return 是否存在这个单词(含占位符)
-    bool dfs(Trie* root,string word,int index)
+    bool dfs(Trie *root, string word, int index)
     {
-        if(index >= word.size()){
+        if (index >= word.size())
+        {
             return root->end;
         }
         char c = word[index];
-        if(c != '.'){
-            if(root->children[c-'a'] != nullptr){
-                return dfs(root->children[c-'a'],word,index+1);
-            }else{return false;}
+        if (c != '.')
+        {
+            if (root->children[c - 'a'] != nullptr)
+            {
+                return dfs(root->children[c - 'a'], word, index + 1);
+            }
+            else
+            {
+                return false;
+            }
         }
-        for(Trie* temp:root->children){
-            if(temp!=nullptr&&dfs(temp,word,index+1)){return true;}
-
+        for (Trie *temp : root->children)
+        {
+            if (temp != nullptr && dfs(temp, word, index + 1))
+            {
+                return true;
+            }
         }
         return false;
     }
@@ -480,9 +488,9 @@ class decimalConversion
 {
 public:
     //十进制转化为任意进制
-    
+
     /**
-     * @description: 
+     * @description:
      * @param {int} digital
      * @param {int} r
      * @return {*}
@@ -508,23 +516,93 @@ public:
 
 void stl_func()
 {
-    vector<int> nums{1,2,3,4,5,6};
-    int res = accumulate(nums.begin(),nums.end(),0);//计算元素和
-
+    vector<int> nums{1, 2, 3, 4, 5, 6};
+    int res = accumulate(nums.begin(), nums.end(), 0); //计算元素和
 }
 
 //获取数组里面的最大值和他后边的次大值
-bool increasingTriplet(vector<int>& nums) {
-        int a = INT_MAX;
-        int b = INT_MAX;
-        for(int i=0;i<nums.size();i++){
-            if(nums[i] <= a){
-                a = nums[i];
-            }else if(nums[i] <= b){
-                b = nums[i];
-            }else{
-                return true;
-            }
+bool increasingTriplet(vector<int> &nums)
+{
+    int a = INT_MAX;
+    int b = INT_MAX;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] <= a)
+        {
+            a = nums[i];
         }
-        return false;
+        else if (nums[i] <= b)
+        {
+            b = nums[i];
+        }
+        else
+        {
+            return true;
+        }
     }
+    return false;
+}
+//前缀和求 [i,j] 的和就是 前缀和数组的preSum[j+1]-preSum[i]
+static const int MAXP = 30;
+void bits_fun()
+{
+    int num1 = 134;
+    //求num1的二级制表示
+    int A[MAXP + 1] = {0};
+    for (int i = MAXP; i >= 0; i--) A[i] = num1 >> i & 1;
+    
+
+}
+
+//并查集
+
+class ConcurrentSearch{
+public:
+    vector<int> fa, rank;
+    ConcurrentSearch():fa(5005),rank(5005){}
+    ConcurrentSearch(vector<int> & ph)
+    {
+        int n = fa.size();
+        fa = vector<int>(n+1);
+        rank = vector<int>(n+1);
+    }
+    //根据初始化不同需要更改并查集的第一数字起点
+    void init(int n,int start)
+    {
+        for(int i=start;i<=n;i++){
+            fa[i] = i;
+            rank[i] = 1;
+        }
+    }
+    //路径压缩
+    int find(int x){
+        return x == fa[x] ? x:(fa[x] = find(fa[x]));
+    }
+    //按秩排序写法
+    void merge(int i,int j)
+    {
+        int x = find(i),y = find(j);
+
+        if(rank[x] <= rank[y]){
+            fa[x] = y;
+            
+        }else{
+            fa[y] = x;
+        }
+        if(rank[x] == rank[y] && x!=y){rank[y]++;}
+    }
+
+    //正常写法
+    int find(vector<int>& fa,int x){
+        return x == fa[x] ? x:(fa[x] = find(fa,fa[x]));
+    }
+    
+    void merge(vector<int>& fa,int i,int j)
+    {
+        int x = find(fa,i),y = find(fa,j);
+
+        fa[x] = y;
+    }
+
+    
+};
