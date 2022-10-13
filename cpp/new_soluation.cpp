@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-07-14 11:26:46
- * @LastEditTime: 2022-10-03 17:01:36
+ * @LastEditTime: 2022-10-11 18:20:12
  * @LastEditors: xinao_seven_
  * @Description:
  * @FilePath: \\1xingao\\cpp\\new_soluation.cpp
@@ -518,6 +518,7 @@ void stl_func()
 {
     vector<int> nums{1, 2, 3, 4, 5, 6};
     int res = accumulate(nums.begin(), nums.end(), 0); //计算元素和
+    auto max_iter = max_element(nums.begin(),nums.end());
 }
 
 //获取数组里面的最大值和他后边的次大值
