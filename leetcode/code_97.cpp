@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-13 20:05:56
- * @LastEditTime: 2022-10-13 20:23:37
+ * @LastEditTime: 2022-10-16 10:31:56
  * @LastEditors: xinao_seven_
  * @Description: code_97
  * @Encoding: utf8
@@ -34,3 +34,7 @@ public:
         return dp[s1.size()][s2.size()];
     }
 };
+
+int findMaxK(std::vector<int>& nums) {
+        
+}

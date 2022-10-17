@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-07-14 11:26:46
- * @LastEditTime: 2022-10-11 18:20:12
+ * @LastEditTime: 2022-10-16 10:35:38
  * @LastEditors: xinao_seven_
  * @Description:
  * @FilePath: \\1xingao\\cpp\\new_soluation.cpp
@@ -607,3 +607,20 @@ public:
 
     
 };
+
+int findMaxK(std::vector<int>& nums) {
+        unordered_set<int> hash;
+        vector<int> res;
+        sort(nums.begin(),nums.end());
+        for(int i:nums){
+            if(i<0){
+                hash.insert(i);
+            }else{
+                if(hash.find(-i)!=hash.end()){
+                    res.push_back((i));
+                }
+            }
+        }
+        sort(res.begin(),res.end());
+        return res[res.size()-1];
+}
