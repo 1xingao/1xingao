@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-13 20:05:56
- * @LastEditTime: 2022-10-16 10:31:56
+ * @LastEditTime: 2022-10-17 21:10:32
  * @LastEditors: xinao_seven_
  * @Description: code_97
  * @Encoding: utf8
@@ -10,7 +10,7 @@
  */
 
 #include<bits/stdc++.h>
-using  std::string;
+using  namespace std;
 class Solution {
 public:
     bool isInterleave(string s1, string s2, string s3) {
@@ -35,6 +35,3 @@ public:
     }
 };
 
-int findMaxK(std::vector<int>& nums) {
-        
-}
