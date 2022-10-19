@@ -1,14 +1,14 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-17 20:43:51
- * @LastEditTime: 2022-10-17 21:15:36
+ * @LastEditTime: 2022-10-18 11:48:57
  * @LastEditors: xinao_seven_
  * @Description: 线段树板子
  * @Encoding: utf8
- * @FilePath: \\1xingao\\cpp\\SegmentTree.cpp
+ * @FilePath: \\1xingao\\cpp\\SegmentTree.h
  *
  */
-
+#pragma once
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -93,4 +93,6 @@ public:
     T range_sum(int l, int r) { return range_sum(l, r, 0, end, root); }
 
     void range_add(int l, int r, int val) { range_add(l, r, val, 0, end, root); }
+
+    void range_set(int index , int val){range_add(index,index,val-range_sum(index,index));}
 };

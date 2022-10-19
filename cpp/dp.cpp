@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-17 19:16:41
- * @LastEditTime: 2022-10-17 19:20:20
+ * @LastEditTime: 2022-10-18 16:03:14
  * @LastEditors: xinao_seven_
  * @Description: 动态规划
  * @Encoding: utf8
@@ -91,4 +91,56 @@ class Soluation_For_Stock{
         }
         return sell[k - 1];
     }
+
+    //数位dp
+    int atMostNGivenDigitSet(vector<string> &digits, int n) {
+        auto s = to_string(n);
+        int m = s.length(), dp[m];
+        memset(dp, -1, sizeof(dp)); // dp[i] = -1 表示 i 这个状态还没被计算出来
+        //i 表示当前填数字的位数， islimit表示是否受到前一个数字的限制（前一个数字等于s[i-1]）
+        // isnum 表示是否可以不填，前面都是前导零的情况
+        function<int(int, bool, bool)> f = [&](int i, bool is_limit, bool is_num) -> int {
+            if (i == m) return is_num; // 如果填了数字，则为 1 种合法方案
+            if (!is_limit && is_num && dp[i] >= 0) return dp[i]; // 在不受到任何约束的情况下，返回记录的结果，避免重复运算
+            int res = 0;
+            if (!is_num) // 前面不填数字，那么可以跳过当前数位，也不填数字
+                // is_limit 改为 false，因为没有填数字，位数都比 n 要短，自然不会受到 n 的约束
+                // is_num 仍然为 false，因为没有填任何数字
+                res = f(i + 1, false, false);
+            char up = is_limit ? s[i] : '9'; // 根据是否受到约束，决定可以填的数字的上限
+            // 注意：对于一般的题目而言，如果这里 is_num 为 false，则必须从 1 开始枚举，由于本题 digits 没有 0，所以无需处理这种情况
+            for (auto &d : digits) { // 枚举要填入的数字 d
+                if (d[0] > up) break; // d 超过上限，由于 digits 是有序的，后面的 d 都会超过上限，故退出循环
+                // is_limit：如果当前受到 n 的约束，且填的数字等于上限，那么后面仍然会受到 n 的约束
+                // is_num 为 true，因为填了数字
+                res += f(i + 1, is_limit && d[0] == up, true);
+            }
+            if (!is_limit && is_num) dp[i] = res; // 在不受到任何约束的情况下，记录结果
+            return res;
+        };
+        return f(0, true, false);
+    }
+
+    
+    int countSpecialNumbers(int n) {
+        auto s = to_string(n);
+        int m = s.length(), dp[m][1 << 10];
+        memset(dp, -1, sizeof(dp));
+        // dp[i] = -1 表示 i 这个状态还没被计算出来
+        //i 表示当前填数字的位数， islimit表示是否受到前一个数字的限制（前一个数字等于s[i-1]）
+        // isnum 表示是否可以不填，前面都是前导零的情况,mask表示前面的数字序列
+        function<int(int, int, bool, bool)> f = [&](int i, int mask, bool is_limit, bool is_num) -> int {
+            if (i == m) return is_num;
+            if (!is_limit && is_num && dp[i][mask] >= 0) return dp[i][mask];
+            int res = 0;
+            if (!is_num) res = f(i + 1, mask, false, false); // 可以跳过当前数位
+            for (int d = 1 - is_num, up = is_limit ? s[i] - '0' : 9; d <= up; ++d) // 枚举要填入的数字 d
+                if ((mask >> d & 1) == 0) // d 不在 mask 中
+                    res += f(i + 1, mask | (1 << d), is_limit && d == up, true);
+            if (!is_limit && is_num) dp[i][mask] = res;
+            return res;
+        };
+        return f(0, 0, true, false);
+    }
+
 };
