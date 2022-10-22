@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-18 17:53:40
- * @LastEditTime: 2022-10-19 10:59:01
+ * @LastEditTime: 2022-10-22 13:27:00
  * @LastEditors: xinao_seven_
  * @Description: 
  * @Encoding: utf8
@@ -86,8 +86,8 @@ void dfs(vector<int> &nums, vector<int> &vis1, vector<char> &ops, vector<int> &v
 }
 
 int main() {
-	vector<int> nums = {2, 34 ,13,11,27,1,1024};
-	vector<char> ops = {'&','+','|','<','>'};
+	vector<int> nums = {1024,18,2,24,16,0,11,27,21,1,2};
+	vector<char> ops = {'|'};
 	vector<int> vis1(nums.size(), 0), vis2(ops.size(), 0);
 	string exp;
 	dfs(nums, vis1, ops, vis2, 0, exp);
