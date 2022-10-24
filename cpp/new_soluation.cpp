@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-07-14 11:26:46
- * @LastEditTime: 2022-10-19 21:04:22
+ * @LastEditTime: 2022-10-23 11:26:14
  * @LastEditors: xinao_seven_
  * @Description:
  * @FilePath: \\1xingao\\cpp\\new_soluation.cpp
@@ -337,6 +337,8 @@ void stl_func()
     vector<int> nums{1, 2, 3, 4, 5, 6};
     int res = accumulate(nums.begin(), nums.end(), 0); //计算元素和
     auto max_iter = max_element(nums.begin(),nums.end());
+    //第一个大于三的值的迭代器
+    int index = upper_bound(nums.begin(),nums.end(),3)-nums.begin();
 }
 
 //获取数组里面的最大值和他后边的次大值
@@ -369,9 +371,45 @@ void bits_fun()
     //求num1的二级制表示
     int A[MAXP + 1] = {0};
     for (int i = MAXP; i >= 0; i--) A[i] = num1 >> i & 1;
-    
 
 }
 
+using namespace std;
 
+class Solution {
+public:
+    bool haveConflict(vector<string>& event1, vector<string>& event2) {
+        if(event1[1].substr(0,2) < event2[0].substr(0,2)){
+            return false;
+        }else if(event1[1].substr(0,2) == event2[0].substr(0,2)){
+            return event1[1].substr(3,2) >event2[0].substr(3,2);
+        }
+        if(event1[0].substr(0,2) > event2[1].substr(0,2)){
+            return false;
+        }else if(event1[0].substr(0,2) == event2[1].substr(0,2)){
+            return event1[0].substr(3,2) < event2[1].substr(3,2);
+        }
+        return true;
+    }
+};
 
+class Solution {
+public:
+    int subarrayGCD(vector<int>& nums, int k) {
+        int res = 0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]%k==0){
+                for(int j=i;j<nums.size();j++){
+                    if(__gcd(nums[i],nums[j])==k){
+                        res++;
+                    }else{
+                        break;
+                    }
+                }
+            }
+        }
+        return res;
+        
+        
+    }
+};
