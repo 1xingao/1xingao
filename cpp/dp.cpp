@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-17 19:16:41
- * @LastEditTime: 2022-10-19 21:02:12
+ * @LastEditTime: 2022-10-27 13:56:46
  * @LastEditors: xinao_seven_
  * @Description: 动态规划
  * @Encoding: utf8
@@ -29,7 +29,7 @@ public:
         }
         return sell;
     }
-
+    //test
     // stock3
     int maxProfit3(vector<int> &prices)
     {
