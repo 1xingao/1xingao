@@ -1,6 +1,16 @@
+'''
+Author: xinao_seven_
+Date: 2021-10-05 22:27:04
+LastEditTime: 2022-10-25 23:08:10
+LastEditors: xinao_seven_
+Description: 
+Encoding: utf8
+FilePath: \\1xingao\\python\\main\\med_find.py
+
+'''
 # -*- coding: utf-8 -*-
 import requests
-import xlwt
+
 
 
 first_url = "http://scxk.nmpa.gov.cn:81/xk/itownet/portalAction.do?method=getXkzsList"   #首页的Id链接
@@ -42,12 +52,6 @@ def get_ID(url):
     #print(respone_1)
     return respone_1
 
-
-def save_data():
-    book = xlwt.Workbook(encoding="utf-8")
-
-    sheet = book.add_sheet('dou', cell_overwrite_ok=True)
-    pass
 
 if __name__ == "__main__":
     data = get_url(first_url)

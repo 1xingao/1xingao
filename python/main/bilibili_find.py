@@ -1,3 +1,13 @@
+'''
+Author: xinao_seven_
+Date: 2021-10-05 22:27:03
+LastEditTime: 2022-10-26 22:02:08
+LastEditors: xinao_seven_
+Description: 
+Encoding: utf8
+FilePath: \\1xingao\\python\\main\\bilibili_find.py
+
+'''
 import requests as r
 import xlwt
 from lxml import etree
