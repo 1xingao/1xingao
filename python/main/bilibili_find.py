@@ -1,7 +1,7 @@
 '''
 Author: xinao_seven_
 Date: 2021-10-05 22:27:03
-LastEditTime: 2022-10-26 22:02:08
+LastEditTime: 2022-11-01 15:52:14
 LastEditors: xinao_seven_
 Description: 
 Encoding: utf8
@@ -25,7 +25,7 @@ headres = {
     "User-Agent":
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
 }
-
+# //*[@id="app"]/div/div[2]/div[2]/ul/li[1]/div/div[2]/a
 
 def get_url(url):
     respone = r.get(url=url, headers=headres).text
@@ -33,7 +33,7 @@ def get_url(url):
     li_list = tree.xpath("//*[@id='app']/div/div[2]/div[2]/ul/li")
     link_list = []
     for i in range(len(li_list)):
-        a_list = li_list[i].xpath("div[2]/div[2]/a")
+        a_list = li_list[i].xpath("div/div[2]/a")
         link = a_list[0].get("href")
         link_list.append(link)
     #print(link_list)
@@ -46,12 +46,12 @@ def get_text(url):
     li_list = tree.xpath("//*[@id='app']/div/div[2]/div[2]/ul/li")
     text_list = []
     for i in range(len(li_list)):
-        a_list = li_list[i].xpath("div[2]/div[2]/a")
+        a_list = li_list[i].xpath("div/div[2]/a")
         link = a_list[0].text
         text_list.append(link)
 
     return text_list
-
+# //*[@id="app"]/div/div[2]/div[2]/ul/li[1]/div/div[2]/div/a/span/text()
 
 def get_upname(url):
     respone = r.get(url=url, headers=headres).text
@@ -59,7 +59,7 @@ def get_upname(url):
     li_list = tree.xpath("//*[@id='app']/div/div[2]/div[2]/ul/li")
     upname_list = []
     for i in range(len(li_list)):
-        link = li_list[i].xpath("div[2]/div[2]/div[1]/a/span/text()")
+        link = li_list[i].xpath("div/div[2]/div/a/span/text()")
 
         upname_list.append(link)
 
@@ -89,3 +89,10 @@ if __name__ == "__main__":
     all_list = [link_list, text_list, upname_list]
     save_data(all_list)
     # print(len(link_list))
+
+
+
+# / html/body/div[2]/div[2]/div[2]/div[2]/p[4]/span
+
+# /html/body/div[2]/div[2]/div[2]/div[2]/p[4]/span/span[1]
+
