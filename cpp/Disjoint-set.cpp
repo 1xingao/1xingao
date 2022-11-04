@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-17 21:06:53
- * @LastEditTime: 2022-10-17 21:08:52
+ * @LastEditTime: 2022-11-04 15:23:03
  * @LastEditors: xinao_seven_
  * @Description: 并查集板子
  * @Encoding: utf8
@@ -69,5 +69,6 @@ public:
         int x = find(fa, i), y = find(fa, j);
 
         fa[x] = y;
+        
     }
 };

@@ -1,3 +1,13 @@
+/*
+ * @Author: xinao_seven_
+ * @Date: 2022-04-09 13:59:40
+ * @LastEditTime: 2022-11-03 18:19:37
+ * @LastEditors: xinao_seven_
+ * @Descriptine
+ * @Encoding: utf8
+ * @FilePath: \\1xingao\\cpp\\kmp.cpp
+ * 
+ */
 #include <bits/stdc++.h>
 using namespace std;
 // namespace std;
@@ -23,7 +33,7 @@ public:
             next[i] = j;
         }
     }
-
+    //判断nneedle是否是hay的子串
     int strStr(string haystack, string needle)
     {
         if (needle.size() == 0)
