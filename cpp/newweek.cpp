@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-11-06 10:28:50
- * @LastEditTime: 2022-11-06 15:32:32
+ * @LastEditTime: 2022-11-07 16:31:20
  * @LastEditors: xinao_seven_
  * @Description:
  * @Encoding: utf8
@@ -187,5 +187,40 @@ public:
         }
         return res;
 
+    }
+};
+
+class Solution {
+public:
+
+    vector<string> getpos(string& s)
+    {
+        if(s.size()==1||(s[0]=='0'&&s.back()=='0')){return{};}
+
+        if(s[0]=='0'){return {"0."+s.substr(1)};}
+        if(s.back()=='0'){return {s};}
+
+        vector<string> res;
+        for(int i=1;i<s.size();i++){
+            res.push_back(s.substr(0,i) + "." + s.substr(i));
+        }
+        return res;
+    }
+    vector<string> ambiguousCoordinates(string s) {
+        s = s.substr(1,s.size()-2);
+        vector<string > res;
+        for(int i=1;i<s.size()-2;i++){
+            string left = s.substr(0,i);
+            string right = s.substr(i);
+            auto l = getpos(left);
+            auto r = getpos(right);
+
+            for(string s1:l){
+                for(string s2:r){
+                    res.push_back("(" + s1 +". "+s2 +")");
+                }
+            }
+            return res;
+        }
     }
 };

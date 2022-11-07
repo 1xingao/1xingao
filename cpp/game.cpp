@@ -1,3 +1,13 @@
+/*
+ * @Author: xinao_seven_
+ * @Date: 2021-10-05 22:27:03
+ * @LastEditTime: 2022-11-06 23:42:36
+ * @LastEditors: xinao_seven_
+ * @Description: 
+ * @Encoding: utf8
+ * @FilePath: \\1xingao\\cpp\\game.cpp
+ * 
+ */
 #include <iostream>
 void change(int x, int y, int book, int array_2[3][3])
 {
