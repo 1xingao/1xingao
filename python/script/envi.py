@@ -1,7 +1,7 @@
 '''
 Author: xinao_seven_
 Date: 2022-08-31 22:38:00
-LastEditTime: 2022-10-29 19:22:15
+LastEditTime: 2022-11-08 16:01:08
 LastEditors: xinao_seven_
 Description: 
 Encoding: utf8
@@ -19,3 +19,5 @@ except OSError as e:
     print(e)
 else:
     print("The directory is deleted successfully")
+
+input()
