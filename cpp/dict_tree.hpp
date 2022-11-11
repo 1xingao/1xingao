@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-19 21:03:55
- * @LastEditTime: 2022-10-19 21:06:15
+ * @LastEditTime: 2022-11-11 21:50:12
  * @LastEditors: xinao_seven_
  * @Description: 字典树板子
  * @Encoding: utf8
@@ -19,6 +19,7 @@ public:
     bool end; //是否为结尾
     vector<Trie *> children;
     Trie() : children(26), end(false) {}
+    ~Trie() {for (auto &i:children){delete i;}}
 
     void insert(string word)
     {
