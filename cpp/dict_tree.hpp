@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-19 21:03:55
- * @LastEditTime: 2022-11-11 21:50:12
+ * @LastEditTime: 2022-11-12 21:00:52
  * @LastEditors: xinao_seven_
  * @Description: 字典树板子
  * @Encoding: utf8
@@ -185,3 +185,4 @@ public:
         return battle(pref, suff);
     }
 };
+

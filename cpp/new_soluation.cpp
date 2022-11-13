@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-07-14 11:26:46
- * @LastEditTime: 2022-10-28 20:26:05
+ * @LastEditTime: 2022-11-13 12:10:06
  * @LastEditors: xinao_seven_
  * @Description:
  * @FilePath: \\1xingao\\cpp\\new_soluation.cpp
@@ -401,4 +401,10 @@ public:
         return pre[row2+1][col2+1] - pre[row1][col2+1]-pre[row2+1][col1]+pre[row1][col1];
     }
 };
+
+
+//求最小公倍数
+int lcm(int a, int b) {
+    return a*b / gcd(a, b);//最大公约数 
+}
 
