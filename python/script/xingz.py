@@ -1,7 +1,7 @@
 '''
 Author: xinao_seven_
 Date: 2022-11-12 21:15:24
-LastEditTime: 2022-11-13 14:15:34
+LastEditTime: 2022-11-13 20:50:50
 LastEditors: xinao_seven_
 Description: 
 Encoding: utf8
@@ -53,7 +53,7 @@ if __name__ == "__main__":
         we,_ = get_span(next_url)
         second_list.extend(we)
         print(f"二级索引part  {i}:   succeed!!,    count:{idx}")
-        time.sleep(1)
+        
 
     print(second_list)
     print("二级索引完成")
@@ -63,7 +63,7 @@ if __name__ == "__main__":
         next,_ = get_span(next_url)
         third_list.extend(next)
         print(f"三级索引part  {i}:   succeed!!,    count:{idx}")
-        time.sleep(1)
+        
     print(third_list)
     print("三级索引完成")
     fouth_list = []
