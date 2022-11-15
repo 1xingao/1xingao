@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-07-14 11:26:46
- * @LastEditTime: 2022-11-13 12:10:06
+ * @LastEditTime: 2022-11-15 21:22:15
  * @LastEditors: xinao_seven_
  * @Description:
  * @FilePath: \\1xingao\\cpp\\new_soluation.cpp
@@ -259,7 +259,48 @@ public:
         return res;
     }
 };
+//状态压缩用二进制遍历 leetcode805
+class Solution {
+public:
+    bool splitArraySameAverage(vector<int>& nums) {
+        int sum = accumulate(nums.begin(),nums.end(),0);
+        int n = nums.size();
+        int m = n/2;
+        if(n==1){return false;}
+        for(auto &x:nums){
+            x = x*n-sum;//对平均值进行运算
+        }
+        unordered_set<int> left;
+        for(int i=1;i<(1<<n/2);i++){
+            int to = 0;
+            for(int j=0;j<m;j++){
+                if(i&(1<<j)){
+                    to += nums[j];
+                }
+            }
+            if(to == 0){
+                return true;
+            }
+            left.insert(to);
+        }
+        int rsum = accumulate(nums.begin()+m,nums.end(),0);
+        
+        for(int i=1;i<(1<<n-m);i++){
+            int to = 0;
+            for(int j=m;j<n;j++){
+                if(i&(1<<j-m)){
+                    to += nums[j];
+                }
+            }
+            if(to == 0 || rsum!=to && left.count(-to)){
+                return true;
+            }
+            
+        }
+        return false;
 
+    }
+};
 //寻找二叉树路径包含Y字型
 
 class Solution_for_tree

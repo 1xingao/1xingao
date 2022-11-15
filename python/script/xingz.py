@@ -1,7 +1,7 @@
 '''
 Author: xinao_seven_
 Date: 2022-11-12 21:15:24
-LastEditTime: 2022-11-13 20:50:50
+LastEditTime: 2022-11-14 16:46:47
 LastEditors: xinao_seven_
 Description: 
 Encoding: utf8
@@ -74,7 +74,7 @@ if __name__ == "__main__":
         fouth_list.extend(next)
         
         print(f"四级索引part  {i}:   succeed!!,    count:{idx}")
-        time.sleep(1)
+        # time.sleep(1)
     print(fouth_list)
     
     fifth_list = []
@@ -85,7 +85,7 @@ if __name__ == "__main__":
         fifth_list.extend(next)
         fifth_list_name.extend(name_list)
         print(f"五级索引part  {i}:   succeed!!,    count:{idx}")
-        time.sleep(1)
+        # time.sleep(1)
     print(fifth_list)
     end = time.time()
     print(f"共计耗时{end-start}s")
