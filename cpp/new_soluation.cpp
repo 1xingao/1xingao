@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-07-14 11:26:46
- * @LastEditTime: 2022-11-15 21:22:15
+ * @LastEditTime: 2022-11-20 16:36:13
  * @LastEditors: xinao_seven_
  * @Description:
  * @FilePath: \\1xingao\\cpp\\new_soluation.cpp
@@ -449,3 +449,45 @@ int lcm(int a, int b) {
     return a*b / gcd(a, b);//最大公约数 
 }
 
+/*
+upper_bound 是大于
+lower_bound 是大于等于
+upper_bound -1 就是小于等于
+
+auto [it2, it1] = equal_range(arr.begin(), arr.end(), query);
+it2 upper_bound , it1 lower_bound
+*/
+class Solution {
+public:
+    vector<int> nums;
+    void dfs(TreeNode* root){
+        if(root){
+            
+            dfs(root->left);
+            nums.push_back(root->val);
+            dfs(root->right);
+        }
+    }
+    vector<vector<int>> closestNodes(TreeNode* root, vector<int>& queries) {
+        dfs(root);
+        vector<vector<int>> res;
+        
+        for(int i=0;i<queries.size();i++){
+            
+            if(nums[0]>queries[i]){
+                res.push_back({-1,nums[0]});
+                continue;
+            }
+            if(nums[nums.size()-1]<queries[i]){
+                res.push_back({nums[nums.size()-1],-1});
+                continue;
+            }
+
+            auto it = upper_bound(nums.begin(),nums.end(),queries[i]);
+            auto it2 = lower_bound(nums.begin(),nums.end(),queries[i]);
+            
+            res.push_back({*(it-1),*(it2)});
+        }
+        return res;
+    }
+};
