@@ -4,7 +4,7 @@
 - [ ] Linux（ing）
 - [ ] elective c++
 - [ ] Unix网络编程
-- [ ] 位运算ing
+- [x] 位运算ing
 - [ ] 线段树ing
 - [ ] 并查集ing
 - [ ] Knight
