@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-17 21:06:53
- * @LastEditTime: 2022-12-15 13:45:44
+ * @LastEditTime: 2022-12-20 16:58:04
  * @LastEditors: xinao_seven_
  * @Description: 并查集板子
  * @Encoding: utf8

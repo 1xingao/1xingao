@@ -21,7 +21,7 @@ namespace cSharp
     {
         public Rectangle(int a , int b ) : base(a, b)
         {
-
+            
         }
         public override int area()
         {
