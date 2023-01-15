@@ -1,3 +1,13 @@
+/*
+ * @Author: xinao_seven_
+ * @Date: 2022-07-12 15:41:26
+ * @LastEditTime: 2023-01-13 13:30:25
+ * @LastEditors: xinao_seven_
+ * @Description: 
+ * @Encoding: utf8
+ * @FilePath: \\1xingao\\cpp\\distinct-subsequences.cpp
+ * 
+ */
 #include<bits/stdc++.h>
 using namespace std;
 class Solution {
@@ -28,7 +38,7 @@ public:
         return dp[s.size()][t.size()];
     }
 };
-class Solution {
+class Solution1 {
 public:
     vector<int> asteroidCollision(vector<int>& asteroids) {
         vector<int> st;

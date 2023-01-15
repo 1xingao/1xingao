@@ -1,15 +1,15 @@
 '''
 Author: xinao_seven_
 Date: 2022-08-12 21:29:58
-LastEditTime: 2022-09-10 19:28:27
+LastEditTime: 2023-01-13 13:25:58
 LastEditors: xinao_seven_
 Description: 
 Encoding: utf8
-FilePath: \\1xingao\\python\\main\\Genshin_impact.py
+FilePath: \\1xingao\\python\\script\\Genshin_impact.py
 
 '''
 
-
+from typing import *
 
 import shutil
 

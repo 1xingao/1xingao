@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-10-19 21:03:55
- * @LastEditTime: 2022-11-12 21:00:52
+ * @LastEditTime: 2023-01-15 16:50:58
  * @LastEditors: xinao_seven_
  * @Description: 字典树板子
  * @Encoding: utf8
@@ -20,7 +20,7 @@ public:
     vector<Trie *> children;
     Trie() : children(26), end(false) {}
     ~Trie() {for (auto &i:children){delete i;}}
-
+    
     void insert(string word)
     {
         Trie *temp = this;
