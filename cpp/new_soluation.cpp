@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2022-07-14 11:26:46
- * @LastEditTime: 2022-11-23 21:00:26
+ * @LastEditTime: 2023-01-15 20:14:49
  * @LastEditors: xinao_seven_
  * @Description:
  * @FilePath: \\1xingao\\cpp\\new_soluation.cpp
@@ -487,6 +487,42 @@ public:
             auto it2 = lower_bound(nums.begin(),nums.end(),queries[i]);
             
             res.push_back({*(it-1),*(it2)});
+        }
+        return res;
+    }
+};
+
+
+
+
+class Difference {
+    // 差分数组
+    private :
+        vector<int> diff;
+
+    Difference(vector<int>& nums) {
+        if(nums.size()==0){return;}
+        // 构造差分数组
+        diff[0] = nums[0];
+        for (int i = 1; i < nums.size(); i++) {
+            diff[i] = nums[i] - nums[i - 1];
+        }
+    }
+
+    /* 给闭区间 [i,j] 增加 val（可以是负数）*/
+    void increment(int i, int j, int val) {
+        diff[i] += val;
+        if (j + 1 < diff.size()) {
+            diff[j + 1] -= val;
+        }
+    }
+
+    vector<int> result() {
+        vector<int> res(diff.size()) ;
+        // 根据差分数组构造结果数组
+        res[0] = diff[0];
+        for (int i = 1; i < diff.size(); i++) {
+            res[i] = res[i - 1] + diff[i];
         }
         return res;
     }
