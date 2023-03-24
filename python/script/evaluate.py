@@ -18,7 +18,12 @@ while True:
         if pyautogui.locateOnScreen("D:\\abcin\\all.jpg",confidence=0.8):
             funx("D:\\abcin\\all.jpg")
             pyautogui.click(pyautogui.locateOnScreen("D:\\abcin\\bia.jpg",confidence=0.9))
-            pyautogui.typewrite("asdfawfawfawfawddawdfawdqawfawfgawfawfwafawgawgawawdawdawda")
+            pyautogui.typewrite("asdfawfawfdgiehfiwhoifh")
+            pyautogui.press("space")
+            pyautogui.typewrite( "awiofawjawdawdawawfawddawdfawdqawfa")
+            pyautogui.press("space")
+            pyautogui.typewrite("wfgawfawfwafawgawgawawdawdawda")
+            pyautogui.press("space")
             
         else:
             print("error")
