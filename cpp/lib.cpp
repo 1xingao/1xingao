@@ -1,7 +1,7 @@
 /*
  * @Author: xinao_seven_
  * @Date: 2023-03-30 22:10:45
- * @LastEditTime: 2023-03-30 23:29:19
+ * @LastEditTime: 2023-03-31 09:49:54
  * @LastEditors: xinao_seven_
  * @Description: 
  * @Encoding: utf8
@@ -72,12 +72,14 @@ public:
     vector<vector<int>> cnt ;
     vector<vector<int>>  grid ;
     vector<vector<int>>  grid_copy;
+    int count_p = 0;
     int temp = 0;
 
     vector<vector<int>> dir{{0,1},{0,-1},{-1,0},{1,0}};
     void dfs(int pos_x,int pos_y)
     {
-
+        // cout << "count:"<< count++ << endl;
+        count_p++;
         if(pos_y == cnt[0].size()){
             pos_x += 1;
             pos_y = 0;
@@ -148,6 +150,7 @@ public:
                 }
                 cout <<endl;
             }
+        cout << count_p<<endl;
         return res;
     }
     
@@ -156,7 +159,8 @@ public:
 int main()
 {
     Soluation test;
-    int ans = test.lib(5,4);
-    cout << ans << endl;
+    int ans = test.lib(6,6);
+    cout << ans <<endl;
+    
     return 0;
 }
