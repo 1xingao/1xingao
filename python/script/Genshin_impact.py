@@ -1,11 +1,11 @@
 '''
 Author: xinao_seven_
 Date: 2022-08-12 21:29:58
-LastEditTime: 2023-01-13 13:25:58
+LastEditTime: 2023-11-07 23:01:44
 LastEditors: xinao_seven_
 Description: 
 Encoding: utf8
-FilePath: \\1xingao\\python\\script\\Genshin_impact.py
+FilePath: \1xingao\python\script\Genshin_impact.py
 
 '''
 

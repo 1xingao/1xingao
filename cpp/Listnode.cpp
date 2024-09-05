@@ -1,3 +1,13 @@
+/*
+ * @Author: xinao_seven_
+ * @Date: 2022-04-05 18:37:45
+ * @LastEditTime: 2024-03-24 15:56:01
+ * @LastEditors: xinao_seven_
+ * @Description: 
+ * @Encoding: utf8
+ * @FilePath: \1xingao\cpp\Listnode.cpp
+ * 
+ */
 #include<bits/stdc++.h>
 //实现链表功能
 class MyLinkedList {
@@ -83,7 +93,7 @@ public:
         }
         std::cout<<std::endl;
     }
-    Getlistsize(){
+    int Getlistsize(){
         return size;
     }
     
