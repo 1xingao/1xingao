@@ -1,7 +1,7 @@
 '''
 Author: xinao_seven_
 Date: 2024-08-14 11:55:42
-LastEditTime: 2024-09-05 10:47:32
+LastEditTime: 2024-09-11 17:38:24
 LastEditors: xinao_seven_
 Description: 
 Encoding: utf8
@@ -79,12 +79,61 @@ class Solution3:
             res += min(left_max[i],right_max[i])-height[i]
         return res
             
+class Solutionx:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        direction = [[0,1],[1,0],[0,-1],[-1,0]]
+
+        direction_cnt = 0
+        res = []
+        row = 0
+        col = 0
+        cnt = 0
+        m,n = len(matrix),len(matrix[0])
+        while(True):
+            
+                
+            res.append(matrix[row][col])
+            matrix[row][col] = 101
+            
+            row_next = row + direction[direction_cnt%4][0]
+            col_next = col + direction[direction_cnt%4][1]
+            if(0<=row_next<m and 0<=col_next<n and matrix[row_next][col_next]!=101):
+                row += direction[direction_cnt%4][0]
+                col += direction[direction_cnt%4][1]
+            else:
+                direction_cnt += 1
+                row += direction[direction_cnt%4][0]
+                col += direction[direction_cnt%4][1]
+            cnt += 1
+            if cnt == m*n:
+                break
+        return res
 
 
+class Solutionx:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        res = []
+        temp = []
+        def dfs(nums: List[int], used:List[int]):
+            if len(nums) == len(temp):
+                res.append(temp)
+                return
+            for i in range(len(nums)):
+                if used[i] : continue
+                temp.append(nums[i])
+                used[i] = True
+                dfs(nums,used)
+                used[i] = False
+                temp.pop()
+
+        used = [False for _ in range(len(nums))]
+        dfs(nums,used)
+        
+        return res
+            
 def main():
-    height = [0,1,0,2,1,0,1,3,2,1,2,1]
-    s2 = Solution3()
-    s2.trap(height)
+    test = Solutionx()
+    test.permute([1,2,3])
     
 
 
